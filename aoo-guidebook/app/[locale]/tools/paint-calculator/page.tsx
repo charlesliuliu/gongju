@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import PaintCalculator from '@/components/tools/PaintCalculator';
 import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
