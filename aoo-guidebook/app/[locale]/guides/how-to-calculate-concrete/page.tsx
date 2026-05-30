@@ -65,7 +65,7 @@ function ComparisonTable({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default async function HowToCalculateConcretePage({ params }: Props) {
+export default async function HowToCalculateConcretePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'concreteCalcPage' });
   const tGuides = await getTranslations({ locale, namespace: 'guides' });

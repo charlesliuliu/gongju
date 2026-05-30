@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function PaintCalculatorPage({ params }: Props) {
+export default async function PaintCalculatorPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'paintCalculator' });
   const tGuides = await getTranslations({ locale, namespace: 'guides' });

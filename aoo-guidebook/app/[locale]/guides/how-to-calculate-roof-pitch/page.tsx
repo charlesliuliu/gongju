@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function HowToCalculateRoofPitchPage({ params }: Props) {
+export default async function HowToCalculateRoofPitchPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'roofPitchGuide' });
   const tGuides = await getTranslations({ locale, namespace: 'guides' });

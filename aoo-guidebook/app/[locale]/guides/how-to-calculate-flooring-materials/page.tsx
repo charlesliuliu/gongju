@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function FlooringCalcPage({ params }: Props) {
+export default async function FlooringCalcPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'flooringCalcPage' });
   const tGuides = await getTranslations({ locale, namespace: 'guides' });

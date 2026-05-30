@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function PitchAngleConversionPage({ params }: Props) {
+export default async function PitchAngleConversionPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'pitchAngleGuide' });
   const tGuides = await getTranslations({ locale, namespace: 'guides' });
