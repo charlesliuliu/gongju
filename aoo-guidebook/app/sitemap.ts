@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
 
-const baseUrl = process.env.NEXT_PUBLIC_URL || 'https://appguidebook.com';
+export const dynamic = 'force-static';
+
+const baseUrl = 'https://appguidebook.com';
 
 const locales = ['en', 'zh'];
 
@@ -29,13 +31,13 @@ const routes = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
-  const now = new Date();
+  const lastModified = new Date('2026-05-31');
 
   for (const locale of locales) {
     for (const route of routes) {
       entries.push({
         url: `${baseUrl}/${locale}${route.path}/`,
-        lastModified: now,
+        lastModified,
         changeFrequency: route.freq,
         priority: route.priority,
       });
