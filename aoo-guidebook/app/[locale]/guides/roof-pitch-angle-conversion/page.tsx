@@ -6,7 +6,7 @@ import { Breadcrumbs, ArticleJsonLd } from '@/components/ui/Breadcrumbs';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations('guides');
+  const t = await getTranslations({ locale, namespace: 'guides' });
   return {
     title: t('pitchAngleGuide'),
     description: t('pitchAngleDesc'),
@@ -28,9 +28,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function PitchAngleConversionPage() {
-  const t = await getTranslations('pitchAngleGuide');
-  const tGuides = await getTranslations('guides');
+export default async function PitchAngleConversionPage({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'pitchAngleGuide' });
+  const tGuides = await getTranslations({ locale, namespace: 'guides' });
 
   const rows = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 

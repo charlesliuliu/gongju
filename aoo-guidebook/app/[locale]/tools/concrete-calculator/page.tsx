@@ -32,9 +32,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function ConcreteCalculatorPage() {
-  const t = await getTranslations('calcPage');
-  const tTools = await getTranslations('tools');
+export default async function ConcreteCalculatorPage({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'calcPage' });
+  const tTools = await getTranslations({ locale, namespace: 'tools' });
 
   return (
     <div className="py-12">

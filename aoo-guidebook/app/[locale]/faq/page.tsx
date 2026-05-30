@@ -21,8 +21,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function FAQPage() {
-  const t = await getTranslations('faq');
+export default async function FAQPage({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'faq' });
 
   const qas = [
     { question: t('q1'), answer: t('a1') },

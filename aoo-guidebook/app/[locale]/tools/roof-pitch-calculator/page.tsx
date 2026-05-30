@@ -7,7 +7,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations('roofCalculator');
+  const t = await getTranslations({ locale, namespace: 'roofCalculator' });
   return {
     title: t('pageTitle'),
     description: t('pageDesc'),
@@ -29,10 +29,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function RoofPitchCalculatorPage() {
-  const t = await getTranslations('roofCalculator');
-  const tGuides = await getTranslations('guides');
-  const tTools = await getTranslations('tools');
+export default async function RoofPitchCalculatorPage({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'roofCalculator' });
+  const tGuides = await getTranslations({ locale, namespace: 'guides' });
+  const tTools = await getTranslations({ locale, namespace: 'tools' });
 
   return (
     <div className="py-12">

@@ -6,7 +6,7 @@ import { Breadcrumbs, ArticleJsonLd } from '@/components/ui/Breadcrumbs';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations('guides');
+  const t = await getTranslations({ locale, namespace: 'guides' });
   return {
     title: t('mixRatiosGuide'),
     description: t('mixRatiosDesc'),
@@ -28,10 +28,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function ConcreteMixRatiosPage() {
-  const t = await getTranslations('mixRatiosPage');
-  const tGuides = await getTranslations('guides');
-  const tGlobal = await getTranslations('global');
+export default async function ConcreteMixRatiosPage({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'mixRatiosPage' });
+  const tGuides = await getTranslations({ locale, namespace: 'guides' });
+  const tGlobal = await getTranslations({ locale, namespace: 'global' });
 
   return (
     <div className="py-12">

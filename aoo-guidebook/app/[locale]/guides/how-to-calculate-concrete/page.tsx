@@ -6,7 +6,7 @@ import { Breadcrumbs, ArticleJsonLd } from '@/components/ui/Breadcrumbs';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations('guides');
+  const t = await getTranslations({ locale, namespace: 'guides' });
   return {
     title: t('concreteCalcGuide'),
     description: t('concreteCalcDesc'),
@@ -65,10 +65,11 @@ function ComparisonTable({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default async function HowToCalculateConcretePage() {
-  const t = await getTranslations('concreteCalcPage');
-  const tGuides = await getTranslations('guides');
-  const tGlobal = await getTranslations('global');
+export default async function HowToCalculateConcretePage({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'concreteCalcPage' });
+  const tGuides = await getTranslations({ locale, namespace: 'guides' });
+  const tGlobal = await getTranslations({ locale, namespace: 'global' });
 
   return (
     <div className="py-12">

@@ -22,8 +22,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function GuidesPage() {
-  const t = await getTranslations('guides');
+export default async function GuidesPage({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'guides' });
 
   const concreteGuides = [
     {

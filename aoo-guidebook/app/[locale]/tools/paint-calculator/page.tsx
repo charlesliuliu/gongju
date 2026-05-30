@@ -7,7 +7,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations('paintCalculator');
+  const t = await getTranslations({ locale, namespace: 'paintCalculator' });
   return {
     title: t('pageTitle'),
     description: t('pageDesc'),
@@ -30,10 +30,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function PaintCalculatorPage() {
-  const t = await getTranslations('paintCalculator');
-  const tGuides = await getTranslations('guides');
-  const tTools = await getTranslations('tools');
+export default async function PaintCalculatorPage({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'paintCalculator' });
+  const tGuides = await getTranslations({ locale, namespace: 'guides' });
+  const tTools = await getTranslations({ locale, namespace: 'tools' });
 
   return (
     <div className="py-12">
