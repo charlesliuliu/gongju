@@ -1,0 +1,158 @@
+import { getTranslations } from 'next-intl/server';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { getLocalizedAlternates } from '@/lib/seo';
+import { Breadcrumbs, ArticleJsonLd } from '@/components/ui/Breadcrumbs';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations('guides');
+  return {
+    title: t('flooringCalcGuide'),
+    description: t('flooringCalcDesc'),
+    keywords: [
+      'calculate flooring materials',
+      'how much flooring do I need',
+      'flooring calculator guide',
+      'measure room for flooring',
+      'flooring waste factor',
+      'flooring boxes needed',
+    ],
+    alternates: getLocalizedAlternates(locale, '/guides/how-to-calculate-flooring-materials'),
+    openGraph: {
+      title: 'How to Calculate Flooring Materials - Complete Guide',
+      description: 'Learn how to calculate the amount of flooring material needed for any room.',
+      url: 'https://appguidebook.com/guides/how-to-calculate-flooring-materials',
+      type: 'article',
+    },
+  };
+}
+
+export default async function FlooringCalcPage() {
+  const t = await getTranslations('flooringCalcPage');
+  const tGuides = await getTranslations('guides');
+  const tGlobal = await getTranslations('global');
+
+  return (
+    <div className="py-12">
+      <article className="container-custom max-w-4xl">
+        {/* Header */}
+        <header className="mb-10">
+          <Breadcrumbs
+            items={[
+              { label: tGuides('title'), href: '/guides' },
+              { label: tGuides('flooringCalcGuide') },
+            ]}
+          />
+          <ArticleJsonLd
+            headline={tGuides('flooringCalcGuide')}
+            description={tGuides('flooringCalcDesc')}
+          />
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight leading-tight">
+            {tGuides('flooringCalcGuide')}
+          </h1>
+          <p className="text-lg text-gray-500 leading-relaxed max-w-3xl">
+            {tGuides('flooringCalcDesc')}
+          </p>
+          <div className="flex items-center gap-3 mt-6 text-sm text-gray-400">
+            <span>Updated June 2026</span>
+            <span className="text-gray-200">|</span>
+            <span>{t('readTime')}</span>
+          </div>
+        </header>
+
+        {/* Intro */}
+        <section className="prose prose-gray max-w-none mb-10">
+          <p>{t('intro')}</p>
+        </section>
+
+        {/* Why Accurate */}
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('whyAccurateTitle')}</h2>
+          <div className="prose prose-gray max-w-none space-y-3">
+            <p>{t('whyAccurateP1')}</p>
+            <p>{t('whyAccurateP2')}</p>
+          </div>
+        </section>
+
+        {/* Step 1 */}
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('step1Title')}</h2>
+          <div className="prose prose-gray max-w-none space-y-3">
+            <p>{t('step1P1')}</p>
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center font-mono text-lg font-semibold text-primary-700">
+              {t('step1Formula')}
+            </div>
+            <p className="font-medium text-gray-700">→ {t('step1Example')}</p>
+            <p>{t('step1LShape')}</p>
+          </div>
+        </section>
+
+        {/* Step 2 */}
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('step2Title')}</h2>
+          <div className="prose prose-gray max-w-none space-y-3">
+            <p>{t('step2P1')}</p>
+            <ul className="list-disc pl-6 space-y-1 text-gray-700">
+              <li>{t('step2Standard')}</li>
+              <li>{t('step2Diagonal')}</li>
+              <li>{t('step2Multiple')}</li>
+            </ul>
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center font-mono text-lg font-semibold text-primary-700">
+              {t('step2Formula')}
+            </div>
+            <p className="font-medium text-gray-700">→ {t('step2Example')}</p>
+          </div>
+        </section>
+
+        {/* Step 3 */}
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('step3Title')}</h2>
+          <div className="prose prose-gray max-w-none space-y-3">
+            <p>{t('step3P1')}</p>
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center font-mono text-lg font-semibold text-primary-700">
+              {t('step3Formula')}
+            </div>
+            <p className="font-medium text-gray-700">→ {t('step3Example')}</p>
+            <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 text-sm text-blue-800">
+              <strong>💡 {t('step3Note')}</strong>
+            </div>
+          </div>
+        </section>
+
+        {/* Step 4 */}
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('step4Title')}</h2>
+          <div className="prose prose-gray max-w-none space-y-3">
+            <p>{t('step4P1')}</p>
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center font-mono text-lg font-semibold text-primary-700">
+              {t('step4Formula')}
+            </div>
+            <p className="font-medium text-gray-700">→ {t('step4Example')}</p>
+            <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 text-sm text-blue-800">
+              <strong>💡 {t('step4Note')}</strong>
+            </div>
+          </div>
+        </section>
+
+        {/* Summary */}
+        <section className="mb-10 p-6 bg-gray-50 border border-gray-200 rounded-xl">
+          <h2 className="text-xl font-bold text-gray-900 mb-3">{t('summaryTitle')}</h2>
+          <div className="prose prose-gray max-w-none space-y-2">
+            <p>{t('summaryP1')}</p>
+            <p>{t('summaryP2')}</p>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <div className="bg-primary-50 border border-primary-100 rounded-xl p-6 text-center">
+          <h3 className="text-xl font-bold text-gray-900 mb-2">{t('ctaTitle')}</h3>
+          <p className="text-gray-600 mb-4">{t('ctaDesc')}</p>
+          <Link href="/tools/flooring-calculator" className="btn-primary inline-block">
+            {tGuides('flooringCalcGuide')}
+          </Link>
+        </div>
+      </article>
+    </div>
+  );
+}
