@@ -62,6 +62,27 @@ export default async function ToolsPage({ params }: Props) {
       icon: '🪵',
       features: ['Board feet', 'Linear feet', 'Cost estimation'],
     },
+    {
+      slug: 'deck-calculator',
+      title: 'Deck Calculator',
+      description: t('deckDesc'),
+      icon: '🪵',
+      features: ['Material quantity', 'Joist count', 'Cost estimation'],
+    },
+    {
+      slug: 'drywall-calculator',
+      title: 'Drywall Calculator',
+      description: t('drywallDesc'),
+      icon: '🧱',
+      features: ['Panel count', 'Joint compound', 'Screw estimate'],
+    },
+    {
+      slug: 'fence-calculator',
+      title: 'Fence Calculator',
+      description: t('fenceDesc'),
+      icon: '🏡',
+      features: ['Post spacing', 'Picket count', 'Cost estimation'],
+    },
   ];
 
   return (
