@@ -37,20 +37,30 @@ aoo-guidebook/
 │       ├── page.tsx             # 首页
 │       ├── guides/
 │       │   ├── page.tsx         # 指南列表页
-│       │   ├── how-to-calculate-concrete/page.tsx
-│       │   ├── concrete-slab-cost-guide/page.tsx
+│       │   ├── board-feet-calculation/page.tsx
 │       │   ├── concrete-mix-ratios/page.tsx
-│       │   ├── how-to-calculate-flooring-materials/page.tsx
-│       │   ├── flooring-types-comparison/page.tsx
+│       │   ├── concrete-slab-cost-guide/page.tsx
 │       │   ├── flooring-cost-estimation/page.tsx
+│       │   ├── flooring-types-comparison/page.tsx
+│       │   ├── how-to-calculate-concrete/page.tsx
+│       │   ├── how-to-calculate-flooring-materials/page.tsx
+│       │   ├── how-to-calculate-lumber/page.tsx
 │       │   ├── how-to-calculate-paint-needed/page.tsx
+│       │   ├── how-to-calculate-roof-pitch/page.tsx
 │       │   ├── interior-vs-exterior-paint/page.tsx
-│       │   └── paint-coverage-per-gallon/page.tsx
+│       │   ├── lumber-sizes-and-types/page.tsx
+│       │   ├── paint-coverage-per-gallon/page.tsx
+│       │   ├── roof-pitch-angle-conversion/page.tsx
+│       │   └── roofing-materials-guide/page.tsx
 │       ├── tools/
 │       │   ├── page.tsx         # 工具列表页
 │       │   ├── concrete-calculator/page.tsx
+│       │   ├── deck-calculator/page.tsx
+│       │   ├── drywall-calculator/page.tsx
+│       │   ├── fence-calculator/page.tsx
 │       │   ├── paint-calculator/page.tsx
 │       │   ├── flooring-calculator/page.tsx
+│       │   ├── lumber-calculator/page.tsx
 │       │   └── roof-pitch-calculator/page.tsx
 │       └── faq/
 │           └── page.tsx
@@ -61,6 +71,9 @@ aoo-guidebook/
 │   │   └── LocaleSwitcher.tsx   # 语言切换器，'use client'
 │   ├── tools/
 │   │   ├── ConcreteCalculator.tsx
+│   │   ├── DeckCalculator.tsx
+│   │   ├── DrywallCalculator.tsx
+│   │   ├── FenceCalculator.tsx
 │   │   ├── RoofPitchCalculator.tsx
 │   │   ├── FlooringCalculator.tsx
 │   │   └── PaintCalculator.tsx
@@ -210,7 +223,46 @@ export default function Component() {
 
 ```bash
 npm run dev      # 开发服务器
-npm run build    # 生产构建
+npm run build    # 生产构建（推送前必须执行，可捕获 MISSING_MESSAGE 等错误）
 npm run start    # 生产启动
 npm run lint     # ESLint 检查
 ```
+
+---
+
+## ⚠️ Cloudflare Pages 构建注意事项
+
+### 平台特有的原生包
+
+Cloudflare Pages 构建环境是 **Linux x64**，而本地开发是 macOS ARM64。
+
+- 不要在 `dependencies` 中添加平台特定的原生包（如 `@parcel/watcher-darwin-arm64`、`@tailwindcss/oxide-darwin-arm64`）
+- 这些包由上级包（如 `@parcel/watcher`）自动通过 `optionalDependencies` 按需引入，Linux 上会自动跳过
+- 项目根已有 `.npmrc` 配置 `ignore-platform-reqs=true` 作为保险
+- 修改 `package-lock.json`（如删除 `node_modules` 后 `npm install`）后，确认锁文件中平台包标记为 `"optional": true`
+
+### 推送前必做检查
+
+1. **`npm run build`** — 本地构建通过再推送。如果本地都过不了，Cloudflare 必然失败
+2. **检查 `app/[locale]/tools/page.tsx`** — 新增工具计算器时记得把工具条目加到 `tools` 数组里
+3. **检查翻译键** — 新增页面/组件引用的 `t('xxx')` 必须在所有语言的 `i18n/messages/*.json` 中
+
+---
+
+## 添加新工具的检查清单
+
+添加新计算器工具时，按以下步骤操作：
+
+1. **创建计算器组件** `components/tools/NewToolCalculator.tsx`（'use client'）
+2. **创建工具页面** `app/[locale]/tools/new-tool/page.tsx`（server component，使用 `getTranslations`）
+3. **添加翻译命名空间** — 在 `i18n/messages/en.json` 和 `zh.json` 中添加完整的 `newToolCalculator` 命名空间（所有 UI 标签）
+4. **注册到工具列表页** — 在 `app/[locale]/tools/page.tsx` 的 `tools` 数组中添加新条目
+5. **可选：添加指南关联** — 在 `guides` 命名空间中添加 `newToolGuide` 和 `newToolDesc` 等
+6. **本地 `npm run build` 验证** — 确认没有 `MISSING_MESSAGE` 错误
+
+### 翻译键命名规范
+
+- 计算器命名空间：使用小驼峰，如 `deckCalculator`、`fenceCalculator`
+- 指南命名空间键：使用小驼峰，如 `deckBuildGuide`、`deckBuildDesc`
+- 页面内容命名空间：使用小驼峰，如 `mixRatiosPage`、`slabCostPage`
+- 所有键名使用小驼峰，如 `pageTitle`、`howToUse`、`enterDimensions`
