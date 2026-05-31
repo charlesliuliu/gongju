@@ -80,13 +80,13 @@ export default async function RoofPitchCalculatorPage({ params }: { params: Prom
         <div className="border-t border-gray-200 pt-12 mt-16">
           <h2 className="text-xl font-bold text-gray-900 mb-6">{tGuides('relatedGuides')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Link href="/guides/how-to-calculate-concrete" className="card hover:shadow-lg transition-all duration-200">
-              <h3 className="font-semibold text-gray-900 mb-1.5">How to Calculate Roof Pitch</h3>
-              <p className="text-sm text-gray-500">Learn the simple methods to measure and calculate roof pitch.</p>
+            <Link href="/guides/how-to-calculate-roof-pitch" className="card hover:shadow-lg transition-all duration-200">
+              <h3 className="font-semibold text-gray-900 mb-1.5">{tGuides('roofPitchCalcGuide')}</h3>
+              <p className="text-sm text-gray-500">{tGuides('roofPitchCalcDesc')}</p>
             </Link>
-            <Link href="/guides/concrete-slab-cost-guide" className="card hover:shadow-lg transition-all duration-200">
-              <h3 className="font-semibold text-gray-900 mb-1.5">Roofing Materials Guide 2024</h3>
-              <p className="text-sm text-gray-500">Compare roofing material options for your project.</p>
+            <Link href="/guides/roofing-materials-guide" className="card hover:shadow-lg transition-all duration-200">
+              <h3 className="font-semibold text-gray-900 mb-1.5">{tGuides('roofingMaterialsGuide')}</h3>
+              <p className="text-sm text-gray-500">{tGuides('roofingMaterialsDesc')}</p>
             </Link>
           </div>
         </div>

@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning>
       <body
         className={`${inter.className} min-h-screen flex flex-col`}
         suppressHydrationWarning

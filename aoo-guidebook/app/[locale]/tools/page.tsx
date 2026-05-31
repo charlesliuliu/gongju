@@ -55,6 +55,13 @@ export default async function ToolsPage({ params }: Props) {
       icon: '🎨',
       features: ['Wall area', 'Gallon calculation', 'Cost estimation'],
     },
+    {
+      slug: 'lumber-calculator',
+      title: 'Lumber Calculator',
+      description: t('lumberDesc'),
+      icon: '🪵',
+      features: ['Board feet', 'Linear feet', 'Cost estimation'],
+    },
   ];
 
   return (

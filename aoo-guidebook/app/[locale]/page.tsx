@@ -52,6 +52,12 @@ export default async function HomePage({ params }: Props) {
       description: tt('paintDesc'),
       icon: '🎨',
     },
+    {
+      slug: 'lumber-calculator',
+      title: 'Lumber Calculator',
+      description: tt('lumberDesc'),
+      icon: '🪵',
+    },
   ];
 
   return (
@@ -96,7 +102,7 @@ export default async function HomePage({ params }: Props) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
             {tools.map((tool) => (
               <Link
                 key={tool.slug}
