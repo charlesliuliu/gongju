@@ -445,13 +445,91 @@
   },
   "faq": {
     "title": "Frequently Asked Questions",
-    "subtitle": "Common questions about our construction calculators.",
-    "q1": "Are these calculators free to use?",
-    "a1": "Yes! All calculators on App Guidebook are completely free to use with no registration required.",
-    "q2": "How accurate are the calculations?",
-    "a2": "Our calculators use industry-standard formulas. However, results are estimates and should be verified for critical projects.",
-    "q3": "Can I use these on my phone?",
-    "a3": "Yes! All tools are mobile-friendly and work great on smartphones and tablets."
+    "subtitle": "Everything you need to know about using our construction calculators and understanding building materials.",
+    "categoryUsage": "Using the Tools",
+    "categoryMaterials": "Materials & Selection",
+    "categoryCost": "Cost & Budgeting",
+    "categoryTrust": "Trust & Accuracy",
+    "items": [
+      {
+        "q": "Are these calculators free to use?",
+        "a": "Yes! All calculators on App Guidebook are completely free to use with no registration or credit card required. Simply enter your dimensions and get instant results.",
+        "cat": "usage",
+        "tool": "/tools/concrete-calculator"
+      },
+      {
+        "q": "Can I use these calculators on my phone at a job site?",
+        "a": "Absolutely! All our tools are fully mobile-friendly and work great on smartphones and tablets. No app download needed — just open your browser and start calculating.",
+        "cat": "usage"
+      },
+      {
+        "q": "How accurate are the calculations?",
+        "a": "Our calculators use industry-standard formulas from construction engineering references. However, all results are estimates and should be verified by a qualified professional for critical structural projects. We recommend ordering 5–10% extra material to account for waste.",
+        "cat": "trust"
+      },
+      {
+        "q": "What’s the difference between C25 and C30 concrete? Which should I use?",
+        "a": "C25 concrete has a compressive strength of 25 N/mm² and is suitable for domestic floors, driveways, and footings. C30 concrete (30 N/mm²) is stronger and better for structural applications like reinforced foundations and commercial slabs. For most residential projects, C25 is sufficient. For load-bearing structures, choose C30 or higher.",
+        "cat": "materials",
+        "guide": "/guides/concrete-mix-ratios"
+      },
+      {
+        "q": "How much concrete do I need for a 10×10 slab?",
+        "a": "A 10 ft × 10 ft slab that is 4 inches thick requires approximately 1.23 cubic yards of concrete. That is about 18 bags of 80 lb mix or 24 bags of 60 lb mix. Use our concrete calculator for precise results based on your exact dimensions.",
+        "cat": "materials",
+        "tool": "/tools/concrete-calculator",
+        "guide": "/guides/how-to-calculate-concrete"
+      },
+      {
+        "q": "What roof pitch is best for drainage?",
+        "a": "For most regions, a roof pitch of 4/12 (18.4°) to 6/12 (26.6°) offers the best balance of drainage and cost. Low-slope roofs (2/12 or less) require special waterproofing. Steeper pitches (9/12+) shed water quickly but are more expensive and dangerous to work on. Check local building codes as requirements vary by climate and snow load.",
+        "cat": "materials",
+        "tool": "/tools/roof-pitch-calculator",
+        "guide": "/guides/roof-pitch-angle-conversion"
+      },
+      {
+        "q": "How much paint do I need for a 12×12 room?",
+        "a": "A standard 12×12 ft bedroom with 8 ft ceilings needs about 1 gallon of paint for two coats on the walls (assuming one accent wall in a different color). For a single coat, 1 gallon covers approximately 350–400 sq ft. Use our paint calculator to factor in windows, doors, and multiple coats.",
+        "cat": "materials",
+        "tool": "/tools/paint-calculator",
+        "guide": "/guides/how-to-calculate-paint-needed"
+      },
+      {
+        "q": "How much flooring should I buy for a 200 sq ft room?",
+        "a": "For a 200 sq ft room, we recommend buying 210–220 sq ft of flooring material to account for a 5–10% waste factor. This includes cuts around corners, doorways, and potential mistakes. Planks installed in a diagonal pattern require more waste (up to 15%). Use our flooring calculator for an exact estimate.",
+        "cat": "materials",
+        "tool": "/tools/flooring-calculator",
+        "guide": "/guides/how-to-calculate-flooring-materials"
+      },
+      {
+        "q": "Should I hire a contractor or DIY my renovation?",
+        "a": "DIY is cost-effective for small projects like painting a room, installing laminate flooring, or building a small deck. However, structural work (foundations, roofing, electrical) should always be done by licensed professionals. Consider your skill level, time, and whether permits are required. Mistakes on structural projects can be expensive to fix.",
+        "cat": "cost"
+      },
+      {
+        "q": "How much does it cost to pour a concrete driveway?",
+        "a": "A typical concrete driveway costs $4–$8 per square foot, or roughly $1,200–$2,400 for a standard 2-car driveway (300 sq ft). This includes materials, labor, and finishing. Costs vary by region. Use our concrete calculator with cost estimation to get a personalized quote.",
+        "cat": "cost",
+        "tool": "/tools/concrete-calculator",
+        "guide": "/guides/concrete-slab-cost-guide"
+      },
+      {
+        "q": "What’s the average cost per square foot to install flooring?",
+        "a": "Flooring costs vary widely by material: laminate ($2–$5/sq ft), vinyl plank ($3–$7/sq ft), hardwood ($6–$15/sq ft), and tile ($5–$12/sq ft). These are material-only costs; professional installation adds $2–$5/sq ft. Use our flooring calculator to estimate materials, and check our flooring cost guide for detailed budgeting.",
+        "cat": "cost",
+        "guide": "/guides/flooring-cost-estimation"
+      },
+      {
+        "q": "Do you store my data or calculations?",
+        "a": "No. All calculations are performed entirely in your browser. We never send your dimensions or cost data to our servers. Your privacy is important to us, and nothing you enter is stored or tracked.",
+        "cat": "trust"
+      },
+      {
+        "q": "Where do your formulas come from?",
+        "a": "Our formulas are based on standard construction engineering references including ASTM guidelines, ACI (American Concrete Institute) standards, and industry-accepted building practices. We regularly review and update them to ensure accuracy.",
+        "cat": "trust"
+      }
+    ]
   },
   "concreteCalcPage": {
     "intro": "Whether you're pouring a patio, building a foundation, or setting fence posts, knowing how to calculate concrete accurately is essential. Order too little, and your project stalls. Order too much, and you waste money. This guide will teach you the exact formulas professionals use to get it right every time.",
