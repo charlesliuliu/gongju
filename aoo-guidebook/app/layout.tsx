@@ -21,6 +21,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8624479561051345"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body
         className={`${inter.className} min-h-screen flex flex-col`}
         suppressHydrationWarning
