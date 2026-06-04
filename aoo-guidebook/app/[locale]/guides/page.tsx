@@ -42,6 +42,7 @@ export default async function GuidesPage({ params }: Props) {
     { slug: 'how-to-calculate-flooring-materials', title: t('flooringCalcGuide'), description: t('flooringCalcDesc'), readTime: t('flooringCalcReadTime'), category: t('flooringCategory') },
     { slug: 'flooring-types-comparison', title: t('flooringTypesGuide'), description: t('flooringTypesDesc'), readTime: t('flooringTypesReadTime'), category: t('flooringCategory') },
     { slug: 'flooring-cost-estimation', title: t('flooringCostGuide'), description: t('flooringCostDesc'), readTime: t('flooringCostReadTime'), category: t('flooringCategory') },
+    { slug: 'diy-flooring-mistakes', title: t('flooringMistakesGuide'), description: t('flooringMistakesDesc'), readTime: t('flooringMistakesReadTime'), category: t('flooringCategory') },
   ];
 
   const paintGuides = [

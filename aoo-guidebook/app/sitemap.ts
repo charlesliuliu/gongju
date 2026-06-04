@@ -25,6 +25,7 @@ const routes = [
   { path: '/guides/how-to-calculate-flooring-materials', priority: 0.8, freq: 'weekly' as const },
   { path: '/guides/flooring-types-comparison', priority: 0.8, freq: 'weekly' as const },
   { path: '/guides/flooring-cost-estimation', priority: 0.8, freq: 'weekly' as const },
+  { path: '/guides/diy-flooring-mistakes', priority: 0.8, freq: 'weekly' as const },
   // Paint
   { path: '/guides/how-to-calculate-paint-needed', priority: 0.8, freq: 'weekly' as const },
   { path: '/guides/interior-vs-exterior-paint', priority: 0.8, freq: 'weekly' as const },
