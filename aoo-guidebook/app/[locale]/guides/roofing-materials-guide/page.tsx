@@ -20,9 +20,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: getLocalizedAlternates(locale, '/guides/roofing-materials-guide'),
     openGraph: {
-      title: 'Roofing Materials Guide 2024 - Complete Comparison',
-      description: 'Compare asphalt shingles, metal roofing, clay tiles, wood shakes, slate, and synthetic materials. Find the best roof for your home.',
-      url: 'https://appguidebook.com/guides/roofing-materials-guide',
+      title: `${t('roofingMaterialsGuide')} | App Guidebook`,
+      description: t('roofingMaterialsDesc'),
+      url: `https://appguidebook.com/${locale}/guides/roofing-materials-guide`,
       type: 'article',
     },
   };
@@ -60,9 +60,9 @@ export default async function RoofingMaterialsGuidePage({ params }: { params: Pr
               { label: tGuides('title'), href: '/guides' },
               { label: tGuides('roofingMaterialsGuide') },
             ]}
-          />
-          <ArticleJsonLd
-            headline={tGuides('roofingMaterialsGuide')}
+           locale={locale}
+/>
+          <ArticleJsonLd path="/guides/roofing-materials-guide" locale={locale} headline={tGuides('roofingMaterialsGuide')}
             description={tGuides('roofingMaterialsDesc')}
           />
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight leading-tight">

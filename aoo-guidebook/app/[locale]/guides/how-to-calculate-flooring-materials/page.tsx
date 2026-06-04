@@ -20,9 +20,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: getLocalizedAlternates(locale, '/guides/how-to-calculate-flooring-materials'),
     openGraph: {
-      title: 'How to Calculate Flooring Materials - Complete Guide',
-      description: 'Learn how to calculate the amount of flooring material needed for any room.',
-      url: 'https://appguidebook.com/guides/how-to-calculate-flooring-materials',
+      title: `${t('flooringCalcGuide')} | App Guidebook`,
+      description: t('flooringCalcDesc'),
+      url: `https://appguidebook.com/${locale}/guides/how-to-calculate-flooring-materials`,
       type: 'article',
     },
   };
@@ -44,9 +44,9 @@ export default async function FlooringCalcPage({ params }: { params: Promise<{ l
               { label: tGuides('title'), href: '/guides' },
               { label: tGuides('flooringCalcGuide') },
             ]}
-          />
-          <ArticleJsonLd
-            headline={tGuides('flooringCalcGuide')}
+           locale={locale}
+/>
+          <ArticleJsonLd path="/guides/how-to-calculate-flooring-materials" locale={locale} headline={tGuides('flooringCalcGuide')}
             description={tGuides('flooringCalcDesc')}
           />
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight leading-tight">

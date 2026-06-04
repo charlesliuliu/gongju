@@ -20,10 +20,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: getLocalizedAlternates(locale, '/guides/how-to-calculate-concrete'),
     openGraph: {
-      title: 'How to Calculate Concrete for Your Project - Complete Guide',
-      description:
-        'Learn how to calculate concrete volume for slabs, footings, and columns with step-by-step instructions.',
-      url: 'https://appguidebook.com/guides/how-to-calculate-concrete',
+      title: `${t('concreteCalcGuide')} | App Guidebook`,
+      description: t('concreteCalcDesc'),
+      url: `https://appguidebook.com/${locale}/guides/how-to-calculate-concrete`,
       type: 'article',
     },
   };
@@ -81,9 +80,9 @@ export default async function HowToCalculateConcretePage({ params }: { params: P
               { label: tGuides('title'), href: '/guides' },
               { label: tGuides('concreteCalcGuide') },
             ]}
-          />
-          <ArticleJsonLd
-            headline={tGuides('concreteCalcGuide')}
+           locale={locale}
+/>
+          <ArticleJsonLd path="/guides/how-to-calculate-concrete" locale={locale} headline={tGuides('concreteCalcGuide')}
             description={tGuides('concreteCalcDesc')}
           />
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight leading-tight">

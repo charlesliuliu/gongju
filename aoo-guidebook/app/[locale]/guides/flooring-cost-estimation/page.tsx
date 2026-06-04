@@ -21,9 +21,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: getLocalizedAlternates(locale, '/guides/flooring-cost-estimation'),
     openGraph: {
-      title: 'Flooring Cost Estimation Guide',
-      description: 'Estimate flooring costs with per-square-foot pricing for all major flooring types.',
-      url: 'https://appguidebook.com/guides/flooring-cost-estimation',
+      title: `${t('flooringCostGuide')} | App Guidebook`,
+      description: t('flooringCostDesc'),
+      url: `https://appguidebook.com/${locale}/guides/flooring-cost-estimation`,
       type: 'article',
     },
   };
@@ -45,9 +45,9 @@ export default async function FlooringCostPage({ params }: { params: Promise<{ l
               { label: tGuides('title'), href: '/guides' },
               { label: tGuides('flooringCostGuide') },
             ]}
-          />
-          <ArticleJsonLd
-            headline={tGuides('flooringCostGuide')}
+           locale={locale}
+/>
+          <ArticleJsonLd path="/guides/flooring-cost-estimation" locale={locale} headline={tGuides('flooringCostGuide')}
             description={tGuides('flooringCostDesc')}
           />
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight leading-tight">

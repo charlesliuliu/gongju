@@ -20,9 +20,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: getLocalizedAlternates(locale, '/guides/flooring-types-comparison'),
     openGraph: {
-      title: 'Flooring Types Comparison Guide',
-      description: 'Compare hardwood, laminate, vinyl, tile, and carpet flooring to find the best option for your home.',
-      url: 'https://appguidebook.com/guides/flooring-types-comparison',
+      title: `${t('flooringTypesGuide')} | App Guidebook`,
+      description: t('flooringTypesDesc'),
+      url: `https://appguidebook.com/${locale}/guides/flooring-types-comparison`,
       type: 'article',
     },
   };
@@ -44,9 +44,9 @@ export default async function FlooringTypesPage({ params }: { params: Promise<{ 
               { label: tGuides('title'), href: '/guides' },
               { label: tGuides('flooringTypesGuide') },
             ]}
-          />
-          <ArticleJsonLd
-            headline={tGuides('flooringTypesGuide')}
+           locale={locale}
+/>
+          <ArticleJsonLd path="/guides/flooring-types-comparison" locale={locale} headline={tGuides('flooringTypesGuide')}
             description={tGuides('flooringTypesDesc')}
           />
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight leading-tight">

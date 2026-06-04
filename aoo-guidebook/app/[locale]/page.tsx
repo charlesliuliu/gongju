@@ -30,33 +30,51 @@ export default async function HomePage({ params }: Props) {
   const tools = [
     {
       slug: 'concrete-calculator',
-      title: 'Concrete Calculator',
+      title: tt('concreteTitle'),
       description: tt('concreteDesc'),
       icon: '🏗️',
     },
     {
       slug: 'roof-pitch-calculator',
-      title: 'Roof Pitch Calculator',
+      title: tt('roofingTitle'),
       description: tt('roofingDesc'),
       icon: '🏠',
     },
     {
       slug: 'flooring-calculator',
-      title: 'Flooring Calculator',
+      title: tt('flooringTitle'),
       description: tt('flooringDesc'),
       icon: '🪵',
     },
     {
       slug: 'paint-calculator',
-      title: 'Paint Calculator',
+      title: tt('paintTitle'),
       description: tt('paintDesc'),
       icon: '🎨',
     },
     {
       slug: 'lumber-calculator',
-      title: 'Lumber Calculator',
+      title: tt('lumberTitle'),
       description: tt('lumberDesc'),
       icon: '🪵',
+    },
+    {
+      slug: 'deck-calculator',
+      title: tt('deckTitle'),
+      description: tt('deckDesc'),
+      icon: '🪵',
+    },
+    {
+      slug: 'drywall-calculator',
+      title: tt('drywallTitle'),
+      description: tt('drywallDesc'),
+      icon: '🧱',
+    },
+    {
+      slug: 'fence-calculator',
+      title: tt('fenceTitle'),
+      description: tt('fenceDesc'),
+      icon: '🏡',
     },
   ];
 
@@ -102,7 +120,7 @@ export default async function HomePage({ params }: Props) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {tools.map((tool) => (
               <Link
                 key={tool.slug}

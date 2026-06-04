@@ -22,9 +22,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: getLocalizedAlternates(locale, '/guides/board-feet-calculation'),
     openGraph: {
-      title: 'Board Feet Calculation - Complete Guide',
-      description: 'Learn how to calculate board feet for lumber. Board foot formula, examples, pricing tips, and a quick reference chart.',
-      url: 'https://appguidebook.com/guides/board-feet-calculation',
+      title: `${t('boardFeetGuide')} | App Guidebook`,
+      description: t('boardFeetDesc'),
+      url: `https://appguidebook.com/${locale}/guides/board-feet-calculation`,
       type: 'article',
     },
   };
@@ -45,9 +45,9 @@ export default async function BoardFeetCalculationPage({ params }: { params: Pro
               { label: tGuides('title'), href: '/guides' },
               { label: tGuides('boardFeetGuide') },
             ]}
-          />
-          <ArticleJsonLd
-            headline={tGuides('boardFeetGuide')}
+           locale={locale}
+/>
+          <ArticleJsonLd path="/guides/board-feet-calculation" locale={locale} headline={tGuides('boardFeetGuide')}
             description={tGuides('boardFeetDesc')}
           />
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight leading-tight">

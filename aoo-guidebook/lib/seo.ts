@@ -1,4 +1,5 @@
 export const SITE_URL = process.env.NEXT_PUBLIC_URL || 'https://appguidebook.com';
+export const OG_IMAGE = `${SITE_URL}/images/og-default.png`;
 
 const locales = ['en', 'zh'] as const;
 
@@ -10,17 +11,6 @@ export function getLocalizedAlternates(locale: string, path: string) {
   return {
     languages,
     canonical: `${SITE_URL}/${locale}${path}/`,
-  };
-}
-
-export function articleSchema(headline: string, description: string, path: string) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline,
-    description,
-    author: { '@type': 'Organization', name: 'App Guidebook' },
-    url: `${SITE_URL}${path}/`,
   };
 }
 
@@ -36,14 +26,30 @@ export function faqPageSchema(qas: { question: string; answer: string }[]) {
   };
 }
 
-export function webAppSchema(name: string, description: string, path: string) {
+export function websiteSchema(locale: string) {
+  const url = `${SITE_URL}/${locale}/`;
   return {
     '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name,
-    description,
-    applicationCategory: 'Tool',
-    operatingSystem: 'All',
-    url: `${SITE_URL}${path}/`,
+    '@type': 'WebSite',
+    name: 'App Guidebook',
+    url,
+    description: 'Free online construction calculators for contractors and DIY enthusiasts.',
+    inLanguage: locale,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${SITE_URL}/${locale}/guides?q={search_term_string}`,
+      'query-input': 'required name=search_term_string',
+    },
+  };
+}
+
+export function organizationSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'App Guidebook',
+    url: SITE_URL,
+    logo: `${SITE_URL}/images/og-default.png`,
+    email: 'l15670751903@163.com',
   };
 }

@@ -20,9 +20,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: getLocalizedAlternates(locale, '/guides/concrete-slab-cost-guide'),
     openGraph: {
-      title: 'Concrete Slab Cost Guide - Pricing & Estimates',
-      description: 'Complete guide to concrete slab costs. Learn pricing per square foot and how to estimate your project budget.',
-      url: 'https://appguidebook.com/guides/concrete-slab-cost-guide',
+      title: `${t('slabCostGuide')} | App Guidebook`,
+      description: t('slabCostDesc'),
+      url: `https://appguidebook.com/${locale}/guides/concrete-slab-cost-guide`,
       type: 'article',
     },
   };
@@ -44,9 +44,9 @@ export default async function ConcreteSlabCostGuidePage({ params }: { params: Pr
               { label: tGuides('title'), href: '/guides' },
               { label: tGuides('slabCostGuide') },
             ]}
-          />
-          <ArticleJsonLd
-            headline={tGuides('slabCostGuide')}
+           locale={locale}
+/>
+          <ArticleJsonLd path="/guides/concrete-slab-cost-guide" locale={locale} headline={tGuides('slabCostGuide')}
             description={tGuides('slabCostDesc')}
           />
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight leading-tight">

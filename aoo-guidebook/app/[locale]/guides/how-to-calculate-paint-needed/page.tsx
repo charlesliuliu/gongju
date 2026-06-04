@@ -20,9 +20,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: getLocalizedAlternates(locale, '/guides/how-to-calculate-paint-needed'),
     openGraph: {
-      title: 'How to Calculate Paint Needed - Complete Guide',
-      description: 'Learn how to calculate exactly how much paint you need for any room.',
-      url: 'https://appguidebook.com/guides/how-to-calculate-paint-needed',
+      title: `${t('paintCalcGuide')} | App Guidebook`,
+      description: t('paintCalcDesc'),
+      url: `https://appguidebook.com/${locale}/guides/how-to-calculate-paint-needed`,
       type: 'article',
     },
   };
@@ -44,9 +44,9 @@ export default async function PaintCalcPage({ params }: { params: Promise<{ loca
               { label: tGuides('title'), href: '/guides' },
               { label: tGuides('paintCalcGuide') },
             ]}
-          />
-          <ArticleJsonLd
-            headline={tGuides('paintCalcGuide')}
+           locale={locale}
+/>
+          <ArticleJsonLd path="/guides/how-to-calculate-paint-needed" locale={locale} headline={tGuides('paintCalcGuide')}
             description={tGuides('paintCalcDesc')}
           />
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight leading-tight">

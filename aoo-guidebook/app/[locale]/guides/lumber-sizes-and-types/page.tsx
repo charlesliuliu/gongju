@@ -22,9 +22,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: getLocalizedAlternates(locale, '/guides/lumber-sizes-and-types'),
     openGraph: {
-      title: 'Lumber Sizes and Types - Complete Guide',
-      description: 'Understand nominal vs actual lumber sizes, wood types, grades, and how to choose the right lumber for your project.',
-      url: 'https://appguidebook.com/guides/lumber-sizes-and-types',
+      title: `${t('lumberSizesGuide')} | App Guidebook`,
+      description: t('lumberSizesDesc'),
+      url: `https://appguidebook.com/${locale}/guides/lumber-sizes-and-types`,
       type: 'article',
     },
   };
@@ -60,9 +60,9 @@ export default async function LumberSizesAndTypesPage({ params }: { params: Prom
               { label: tGuides('title'), href: '/guides' },
               { label: tGuides('lumberSizesGuide') },
             ]}
-          />
-          <ArticleJsonLd
-            headline={tGuides('lumberSizesGuide')}
+           locale={locale}
+/>
+          <ArticleJsonLd path="/guides/lumber-sizes-and-types" locale={locale} headline={tGuides('lumberSizesGuide')}
             description={tGuides('lumberSizesDesc')}
           />
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight leading-tight">
@@ -97,7 +97,7 @@ export default async function LumberSizesAndTypesPage({ params }: { params: Prom
 
           <div className="bg-amber-50 border border-amber-200 rounded-xl p-5">
             <p className="text-gray-700 text-sm">
-              <strong>Pro Tip:</strong> Always measure before cutting. A "2x4" is never actually 2 inches by 4 inches. Planning with actual dimensions in mind saves time, money, and wasted material.
+              {t('nominalProTip')}
             </p>
           </div>
         </section>
@@ -115,9 +115,9 @@ export default async function LumberSizesAndTypesPage({ params }: { params: Prom
             <table className="w-full border-collapse text-sm">
               <thead>
                 <tr className="bg-gray-100">
-                  <th className="p-3 text-left font-semibold text-gray-900">Nominal Size</th>
-                  <th className="p-3 text-left font-semibold text-gray-900">Actual Size</th>
-                  <th className="p-3 text-left font-semibold text-gray-900">Common Uses</th>
+                  <th className="p-3 text-left font-semibold text-gray-900">{t('dimensionsHeaderNominal')}</th>
+                  <th className="p-3 text-left font-semibold text-gray-900">{t('dimensionsHeaderActual')}</th>
+                  <th className="p-3 text-left font-semibold text-gray-900">{t('dimensionsHeaderUses')}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
@@ -141,13 +141,13 @@ export default async function LumberSizesAndTypesPage({ params }: { params: Prom
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
-              <h3 className="font-semibold text-gray-900 mb-3">Softwood</h3>
+              <h3 className="font-semibold text-gray-900 mb-3">{t('softwoodLabel')}</h3>
               <p className="text-gray-700 text-sm">
                 {t('softwoodP1')}
               </p>
             </div>
             <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
-              <h3 className="font-semibold text-gray-900 mb-3">Hardwood</h3>
+              <h3 className="font-semibold text-gray-900 mb-3">{t('hardwoodLabel')}</h3>
               <p className="text-gray-700 text-sm">
                 {t('hardwoodP1')}
               </p>
@@ -172,7 +172,7 @@ export default async function LumberSizesAndTypesPage({ params }: { params: Prom
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
             </svg>
             <p className="text-gray-700 text-sm">
-              <strong>Safety Note:</strong> Always wear gloves and a dust mask when cutting pressure treated lumber. Never burn treated wood — it releases toxic chemicals.
+              {t('softwoodSafetyNote')}
             </p>
           </div>
         </section>
@@ -209,29 +209,29 @@ export default async function LumberSizesAndTypesPage({ params }: { params: Prom
             <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 flex items-start gap-3">
               <span className="text-primary-600 font-bold text-lg leading-none mt-0.5">1</span>
               <div>
-                <span className="font-semibold text-gray-900">Determine the use case.</span>
-                <p className="text-gray-600 text-sm mt-0.5">Structural framing, finish carpentry, outdoor projects, and furniture each demand different lumber grades and types.</p>
+                <span className="font-semibold text-gray-900">{t('chooseStep1Title')}</span>
+                <p className="text-gray-600 text-sm mt-0.5">{t('chooseStep1Desc')}</p>
               </div>
             </div>
             <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 flex items-start gap-3">
               <span className="text-primary-600 font-bold text-lg leading-none mt-0.5">2</span>
               <div>
-                <span className="font-semibold text-gray-900">Check local building codes.</span>
-                <p className="text-gray-600 text-sm mt-0.5">Codes dictate minimum grade, treatment, and span ratings for structural applications.</p>
+                <span className="font-semibold text-gray-900">{t('chooseStep2Title')}</span>
+                <p className="text-gray-600 text-sm mt-0.5">{t('chooseStep2Desc')}</p>
               </div>
             </div>
             <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 flex items-start gap-3">
               <span className="text-primary-600 font-bold text-lg leading-none mt-0.5">3</span>
               <div>
-                <span className="font-semibold text-gray-900">Account for moisture exposure.</span>
-                <p className="text-gray-600 text-sm mt-0.5">Indoor, outdoor above ground, and ground contact each require different treatment levels.</p>
+                <span className="font-semibold text-gray-900">{t('chooseStep3Title')}</span>
+                <p className="text-gray-600 text-sm mt-0.5">{t('chooseStep3Desc')}</p>
               </div>
             </div>
             <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 flex items-start gap-3">
               <span className="text-primary-600 font-bold text-lg leading-none mt-0.5">4</span>
               <div>
-                <span className="font-semibold text-gray-900">Buy extra material.</span>
-                <p className="text-gray-600 text-sm mt-0.5">Order 10-15% extra to account for cuts, knots, warped boards, and future repairs.</p>
+                <span className="font-semibold text-gray-900">{t('chooseStep4Title')}</span>
+                <p className="text-gray-600 text-sm mt-0.5">{t('chooseStep4Desc')}</p>
               </div>
             </div>
           </div>

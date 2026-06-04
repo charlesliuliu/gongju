@@ -5,7 +5,7 @@ type Crumb = {
   href?: string;
 };
 
-export function Breadcrumbs({ items }: { items: Crumb[] }) {
+export function Breadcrumbs({ items, locale }: { items: Crumb[]; locale?: string }) {
   const baseUrl = process.env.NEXT_PUBLIC_URL || 'https://appguidebook.com';
 
   const jsonLd = {
@@ -15,7 +15,7 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
       '@type': 'ListItem',
       position: i + 1,
       name: item.label,
-      ...(item.href ? { item: `${baseUrl}${item.href}` } : {}),
+      ...(item.href ? { item: `${baseUrl}/${locale ?? 'en'}${item.href}` } : {}),
     })),
   };
 
@@ -48,9 +48,13 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
 export function ArticleJsonLd({
   headline,
   description,
+  path,
+  locale,
 }: {
   headline: string;
   description: string;
+  path: string;
+  locale?: string;
 }) {
   const baseUrl = process.env.NEXT_PUBLIC_URL || 'https://appguidebook.com';
 
@@ -61,7 +65,7 @@ export function ArticleJsonLd({
     description,
     author: { '@type': 'Organization', name: 'App Guidebook' },
     publisher: { '@type': 'Organization', name: 'App Guidebook' },
-    url: baseUrl,
+    url: `${baseUrl}/${locale ?? 'en'}${path}/`,
   };
 
   return (

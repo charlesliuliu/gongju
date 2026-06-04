@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
+import { Link } from '@/i18n/navigation';
 import ConcreteCalculator from '@/components/tools/ConcreteCalculator';
 import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
@@ -35,6 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ConcreteCalculatorPage({ params }: Props) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'calcPage' });
+  const tGuides = await getTranslations({ locale, namespace: 'guides' });
   const tTools = await getTranslations({ locale, namespace: 'tools' });
 
   return (
@@ -45,7 +47,8 @@ export default async function ConcreteCalculatorPage({ params }: Props) {
             { label: tTools('pageTitle'), href: '/tools' },
             { label: t('title') },
           ]}
-        />
+         locale={locale}
+/>
         {/* Page Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
@@ -119,6 +122,25 @@ export default async function ConcreteCalculatorPage({ params }: Props) {
                 <span>{t('useRetaining')}</span>
               </li>
             </ul>
+          </div>
+        </div>
+
+        {/* Related Guides */}
+        <div className="border-t border-gray-200 pt-12 mt-16">
+          <h2 className="text-xl font-bold text-gray-900 mb-6">{tGuides('relatedGuides')}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Link href="/guides/how-to-calculate-concrete" className="card hover:shadow-lg transition-all duration-200">
+              <h3 className="font-semibold text-gray-900 mb-1.5">{tGuides('concreteCalcGuide')}</h3>
+              <p className="text-sm text-gray-500">{tGuides('concreteCalcDesc')}</p>
+            </Link>
+            <Link href="/guides/concrete-mix-ratios" className="card hover:shadow-lg transition-all duration-200">
+              <h3 className="font-semibold text-gray-900 mb-1.5">{tGuides('mixRatiosGuide')}</h3>
+              <p className="text-sm text-gray-500">{tGuides('mixRatiosDesc')}</p>
+            </Link>
+            <Link href="/guides/concrete-slab-cost-guide" className="card hover:shadow-lg transition-all duration-200">
+              <h3 className="font-semibold text-gray-900 mb-1.5">{tGuides('slabCostGuide')}</h3>
+              <p className="text-sm text-gray-500">{tGuides('slabCostDesc')}</p>
+            </Link>
           </div>
         </div>
 

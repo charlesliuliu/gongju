@@ -44,7 +44,8 @@ export default async function PaintCalculatorPage({ params }: { params: Promise<
             { label: tTools('pageTitle'), href: '/tools' },
             { label: t('pageTitle') },
           ]}
-        />
+         locale={locale}
+/>
         {/* Header */}
         <header className="mb-10">
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight leading-tight">
@@ -98,6 +99,13 @@ export default async function PaintCalculatorPage({ params }: { params: Promise<
               <p className="text-sm text-gray-500">{tGuides('paintCoverageDesc')}</p>
             </Link>
           </div>
+        </div>
+
+        {/* Disclaimer */}
+        <div className="border-t border-gray-200 pt-8 mt-12">
+          <p className="text-sm text-gray-400 leading-relaxed">
+            {t('disclaimer')}
+          </p>
         </div>
       </div>
     </div>

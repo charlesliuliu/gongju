@@ -2,13 +2,14 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { useLocale } from 'next-intl';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from '@/i18n/navigation';
 import { localeLabels, locales } from '@/i18n/routing';
 import type { Locale } from '@/i18n/routing';
 
 export default function LocaleSwitcher() {
   const currentLocale = useLocale();
   const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -23,15 +24,8 @@ export default function LocaleSwitcher() {
   }, []);
 
   const handleLocaleChange = (nextLocale: Locale) => {
-    const segments = pathname.split('/').filter(Boolean);
-    // Replace the first segment (current locale) with the new locale
-    if (segments.length > 0 && locales.includes(segments[0] as Locale)) {
-      segments[0] = nextLocale;
-    } else {
-      segments.unshift(nextLocale);
-    }
-    const newPath = '/' + segments.join('/');
-    window.location.href = newPath;
+    router.replace(pathname, { locale: nextLocale });
+    setOpen(false);
   };
 
   return (

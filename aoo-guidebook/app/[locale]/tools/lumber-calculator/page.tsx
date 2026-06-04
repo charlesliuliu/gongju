@@ -44,7 +44,8 @@ export default async function LumberCalculatorPage({ params }: { params: Promise
             { label: tTools('pageTitle'), href: '/tools' },
             { label: t('pageTitle') },
           ]}
-        />
+         locale={locale}
+/>
         {/* Header */}
         <header className="mb-10">
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight leading-tight">

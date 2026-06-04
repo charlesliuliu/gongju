@@ -20,9 +20,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: getLocalizedAlternates(locale, '/guides/concrete-mix-ratios'),
     openGraph: {
-      title: 'Understanding Concrete Mix Ratios - Complete Guide',
-      description: 'Learn about concrete mix ratios, strength grades, and when to use each type.',
-      url: 'https://appguidebook.com/guides/concrete-mix-ratios',
+      title: `${t('mixRatiosGuide')} | App Guidebook`,
+      description: t('mixRatiosDesc'),
+      url: `https://appguidebook.com/${locale}/guides/concrete-mix-ratios`,
       type: 'article',
     },
   };
@@ -44,9 +44,9 @@ export default async function ConcreteMixRatiosPage({ params }: { params: Promis
               { label: tGuides('title'), href: '/guides' },
               { label: tGuides('mixRatiosGuide') },
             ]}
-          />
-          <ArticleJsonLd
-            headline={tGuides('mixRatiosGuide')}
+           locale={locale}
+/>
+          <ArticleJsonLd path="/guides/concrete-mix-ratios" locale={locale} headline={tGuides('mixRatiosGuide')}
             description={tGuides('mixRatiosDesc')}
           />
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight leading-tight">

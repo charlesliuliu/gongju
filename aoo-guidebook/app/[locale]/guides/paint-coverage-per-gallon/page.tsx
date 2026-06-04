@@ -20,9 +20,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: getLocalizedAlternates(locale, '/guides/paint-coverage-per-gallon'),
     openGraph: {
-      title: 'Paint Coverage per Gallon Guide',
-      description: 'Learn how much area a gallon of paint covers and what factors affect paint coverage rates.',
-      url: 'https://appguidebook.com/guides/paint-coverage-per-gallon',
+      title: `${t('paintCoverageGuide')} | App Guidebook`,
+      description: t('paintCoverageDesc'),
+      url: `https://appguidebook.com/${locale}/guides/paint-coverage-per-gallon`,
       type: 'article',
     },
   };
@@ -44,9 +44,9 @@ export default async function PaintCoveragePage({ params }: { params: Promise<{ 
               { label: tGuides('title'), href: '/guides' },
               { label: tGuides('paintCoverageGuide') },
             ]}
-          />
-          <ArticleJsonLd
-            headline={tGuides('paintCoverageGuide')}
+           locale={locale}
+/>
+          <ArticleJsonLd path="/guides/paint-coverage-per-gallon" locale={locale} headline={tGuides('paintCoverageGuide')}
             description={tGuides('paintCoverageDesc')}
           />
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight leading-tight">

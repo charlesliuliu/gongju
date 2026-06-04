@@ -20,9 +20,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: getLocalizedAlternates(locale, '/guides/roof-pitch-angle-conversion'),
     openGraph: {
-      title: 'Roof Pitch vs Angle Conversion - Complete Guide',
-      description: 'Convert roof pitch to angle in degrees with formulas, examples, and a full conversion table.',
-      url: 'https://appguidebook.com/guides/roof-pitch-angle-conversion',
+      title: `${t('pitchAngleGuide')} | App Guidebook`,
+      description: t('pitchAngleDesc'),
+      url: `https://appguidebook.com/${locale}/guides/roof-pitch-angle-conversion`,
       type: 'article',
     },
   };
@@ -45,9 +45,9 @@ export default async function PitchAngleConversionPage({ params }: { params: Pro
               { label: tGuides('title'), href: '/guides' },
               { label: tGuides('pitchAngleGuide') },
             ]}
-          />
-          <ArticleJsonLd
-            headline={tGuides('pitchAngleGuide')}
+           locale={locale}
+/>
+          <ArticleJsonLd path="/guides/roof-pitch-angle-conversion" locale={locale} headline={tGuides('pitchAngleGuide')}
             description={tGuides('pitchAngleDesc')}
           />
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight leading-tight">

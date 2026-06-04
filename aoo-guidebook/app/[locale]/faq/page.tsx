@@ -64,7 +64,7 @@ export default async function FAQPage({ params }: Props) {
     <div className="py-12">
       <div className="container-custom">
         {/* Breadcrumb */}
-        <Breadcrumbs items={[{ label: tGlobal('faq') }]} />
+        <Breadcrumbs items={[{ label: tGlobal('faq') }]} locale={locale} />
 
         {/* Header */}
         <h1 className="text-4xl font-bold text-gray-900 mb-4 text-center">

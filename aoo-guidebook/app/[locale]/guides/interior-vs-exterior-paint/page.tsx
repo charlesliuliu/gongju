@@ -21,9 +21,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: getLocalizedAlternates(locale, '/guides/interior-vs-exterior-paint'),
     openGraph: {
-      title: 'Interior vs Exterior Paint Guide',
-      description: 'Understand the differences between interior and exterior paints and how to choose the right type.',
-      url: 'https://appguidebook.com/guides/interior-vs-exterior-paint',
+      title: `${t('paintTypesGuide')} | App Guidebook`,
+      description: t('paintTypesDesc'),
+      url: `https://appguidebook.com/${locale}/guides/interior-vs-exterior-paint`,
       type: 'article',
     },
   };
@@ -45,9 +45,9 @@ export default async function PaintTypesPage({ params }: { params: Promise<{ loc
               { label: tGuides('title'), href: '/guides' },
               { label: tGuides('paintTypesGuide') },
             ]}
-          />
-          <ArticleJsonLd
-            headline={tGuides('paintTypesGuide')}
+           locale={locale}
+/>
+          <ArticleJsonLd path="/guides/interior-vs-exterior-paint" locale={locale} headline={tGuides('paintTypesGuide')}
             description={tGuides('paintTypesDesc')}
           />
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight leading-tight">

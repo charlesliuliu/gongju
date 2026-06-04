@@ -43,7 +43,8 @@ export default async function DeckCalculatorPage({ params }: { params: Promise<{
             { label: tTools('pageTitle'), href: '/tools' },
             { label: t('pageTitle') },
           ]}
-        />
+         locale={locale}
+/>
         {/* Header */}
         <header className="mb-10">
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight leading-tight">
@@ -110,7 +111,7 @@ export default async function DeckCalculatorPage({ params }: { params: Promise<{
         {/* Related Guides */}
         <div className="border-t border-gray-200 pt-12 mt-16">
           <h2 className="text-xl font-bold text-gray-900 mb-6">{tGuides('relatedGuides')}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Link href="/guides/how-to-build-a-deck" className="card hover:shadow-lg transition-all duration-200">
               <h3 className="font-semibold text-gray-900 mb-1.5">{tGuides('deckBuildGuide')}</h3>
               <p className="text-sm text-gray-500">{tGuides('deckBuildDesc')}</p>

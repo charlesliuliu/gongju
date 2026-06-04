@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="50%" stop-color="#1d4ed8"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1050" cy="50" r="300" fill="white" fill-opacity="0.05"/>
+  <text x="60" y="200" font-family="system-ui, sans-serif" font-size="72" font-weight="800" fill="white">
+    App Guidebook
+  </text>
+  <text x="60" y="290" font-family="system-ui, sans-serif" font-size="36" fill="rgba(255,255,255,0.9)">
+    Free Construction Calculators
+  </text>
+  <line x1="60" y1="330" x2="500" y2="330" stroke="#f97316" stroke-width="6" stroke-linecap="round"/>
+  <text x="60" y="420" font-family="system-ui, sans-serif" font-size="28" fill="rgba(255,255,255,0.75)">
+    Concrete  ·  Roofing  ·  Flooring  ·  Paint
+  </text>
+  <text x="60" y="465" font-family="system-ui, sans-serif" font-size="28" fill="rgba(255,255,255,0.75)">
+    Lumber  ·  Deck  ·  Drywall  ·  Fence
+  </text>
+  <text x="60" y="560" font-family="system-ui, sans-serif" font-size="20" fill="rgba(255,255,255,0.5)">
+    appguidebook.com
+  </text>
+</svg>

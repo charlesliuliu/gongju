@@ -22,10 +22,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: getLocalizedAlternates(locale, '/guides/how-to-calculate-lumber'),
     openGraph: {
-      title: 'How to Calculate Lumber (Board Feet) - Complete Guide',
-      description:
-        'Learn how to calculate board feet for lumber with step-by-step instructions, formulas, and common size charts.',
-      url: 'https://appguidebook.com/guides/how-to-calculate-lumber',
+      title: `${t('howToCalculateLumberGuide')} | App Guidebook`,
+      description: t('howToCalculateLumberDesc'),
+      url: `https://appguidebook.com/${locale}/guides/how-to-calculate-lumber`,
       type: 'article',
     },
   };
@@ -71,7 +70,6 @@ export default async function HowToCalculateLumberPage({ params }: { params: Pro
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'lumberCalcPage' });
   const tGuides = await getTranslations({ locale, namespace: 'guides' });
-  const tGlobal = await getTranslations({ locale, namespace: 'global' });
 
   return (
     <div className="py-12">
@@ -83,9 +81,9 @@ export default async function HowToCalculateLumberPage({ params }: { params: Pro
               { label: tGuides('title'), href: '/guides' },
               { label: tGuides('lumberCalcGuide') },
             ]}
-          />
-          <ArticleJsonLd
-            headline={tGuides('lumberCalcGuide')}
+           locale={locale}
+/>
+          <ArticleJsonLd path="/guides/how-to-calculate-lumber" locale={locale} headline={tGuides('lumberCalcGuide')}
             description={tGuides('lumberCalcDesc')}
           />
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight leading-tight">

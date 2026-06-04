@@ -20,9 +20,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: getLocalizedAlternates(locale, '/guides/how-to-calculate-roof-pitch'),
     openGraph: {
-      title: 'How to Calculate Roof Pitch - Complete Guide',
-      description: 'Learn how to measure and calculate roof pitch using a level, speed square, or from blueprints. Step-by-step guide with examples.',
-      url: 'https://appguidebook.com/guides/how-to-calculate-roof-pitch',
+      title: `${t('roofPitchCalcGuide')} | App Guidebook`,
+      description: t('roofPitchCalcDesc'),
+      url: `https://appguidebook.com/${locale}/guides/how-to-calculate-roof-pitch`,
       type: 'article',
     },
   };
@@ -43,9 +43,9 @@ export default async function HowToCalculateRoofPitchPage({ params }: { params: 
               { label: tGuides('title'), href: '/guides' },
               { label: tGuides('roofPitchCalcGuide') },
             ]}
-          />
-          <ArticleJsonLd
-            headline={tGuides('roofPitchCalcGuide')}
+           locale={locale}
+/>
+          <ArticleJsonLd path="/guides/how-to-calculate-roof-pitch" locale={locale} headline={tGuides('roofPitchCalcGuide')}
             description={tGuides('roofPitchCalcDesc')}
           />
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight leading-tight">
