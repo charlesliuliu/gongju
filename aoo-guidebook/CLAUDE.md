@@ -237,7 +237,27 @@ npm run lint     # ESLint 检查
 
 ---
 
-## ⚠️ Cloudflare Pages 构建注意事项
+## ⚠️ Cloudflare Pages 部署
+
+### 部署方式
+
+项目使用 Next.js 静态导出 (`output: 'export'`)，构建产物在 `out/` 目录。
+
+**本地部署（推荐）：**
+```bash
+npm run deploy
+```
+等同于 `npm run build && npx wrangler pages deploy ./out`，项目名已配置在 `wrangler.toml` 中（`name = "gongju"`）。
+
+**Git 自动部署：**
+Cloudflare Pages Dashboard → Settings → Builds & deployments：
+| 配置项 | 值 |
+|--------|-----|
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler pages deploy ./out` |
+| Output directory | `out` |
+
+⚠️ **Deploy command 必须用 `wrangler pages deploy ./out`**，不是 `wrangler deploy`（那是 Workers 命令）。
 
 ### 平台特有的原生包
 
