@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" style="stop-color:#1e40af"/>
+      <stop offset="50%" style="stop-color:#7c2d12"/>
+      <stop offset="100%" style="stop-color:#92400e"/>
+    </linearGradient>
+    <linearGradient id="gw" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" style="stop-color:#d4c5a9"/>
+      <stop offset="100%" style="stop-color:#a8967e"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#sky)"/>
+  <!-- Stars -->
+  <circle cx="100" cy="50" r="1.5" fill="#ffffff66"/>
+  <circle cx="250" cy="30" r="1" fill="#ffffff88"/>
+  <circle cx="400" cy="60" r="1.5" fill="#ffffff66"/>
+  <circle cx="550" cy="40" r="1" fill="#ffffff88"/>
+  <circle cx="700" cy="55" r="1.5" fill="#ffffff66"/>
+  <circle cx="150" cy="80" r="1" fill="#ffffff44"/>
+  <circle cx="650" cy="25" r="1" fill="#ffffff44"/>
+  <!-- Mountains background -->
+  <path d="M0 350 Q100 200 200 300 Q300 180 400 280 Q500 200 600 300 Q700 220 800 320 L800 500 L0 500Z" fill="#1e3a8a88"/>
+  <!-- Great Wall -->
+  <path d="M0 320 Q50 290 100 300 Q150 270 200 280 Q250 250 300 260 Q350 230 400 240 Q450 220 500 230 Q550 210 600 220 Q650 200 700 210 Q750 190 800 200" fill="none" stroke="url(#gw)" stroke-width="6" stroke-linecap="round"/>
+  <!-- Towers -->
+  <rect x="140" y="250" width="16" height="22" rx="2" fill="#d4c5a9"/>
+  <rect x="340" y="210" width="16" height="22" rx="2" fill="#d4c5a9"/>
+  <rect x="540" y="190" width="16" height="22" rx="2" fill="#d4c5a9"/>
+  <rect x="690" y="180" width="16" height="22" rx="2" fill="#d4c5a9"/>
+  <!-- Moon -->
+  <circle cx="650" cy="80" r="30" fill="#fde68a" opacity="0.8"/>
+  <circle cx="650" cy="80" r="25" fill="#fbbf24"/>
+</svg>

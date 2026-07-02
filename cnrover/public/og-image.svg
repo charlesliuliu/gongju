@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669"/>
+      <stop offset="100%" style="stop-color:#047857"/>
+    </linearGradient>
+    <linearGradient id="gw" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" style="stop-color:#d4c5a9"/>
+      <stop offset="100%" style="stop-color:#a8967e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Mountains -->
+  <path d="M0 400 Q150 200 300 350 Q400 280 500 320 Q600 150 750 300 Q850 220 950 280 Q1050 180 1200 300 L1200 630 L0 630 Z" fill="#065f4688"/>
+  <!-- Great Wall -->
+  <path d="M0 380 L80 340 L80 350 L160 310 L160 320 L240 280 L240 290 L320 250 L320 260 L400 290 L400 300 L480 270 L480 280 L560 250 L560 260 L640 230 L640 240 L720 270 L720 280 L800 250 L800 260 L880 290 L880 300 L960 270 L960 280 L1040 250 L1040 260 L1120 230 L1120 240 L1200 270" fill="none" stroke="url(#gw)" stroke-width="6" stroke-linecap="round"/>
+  <!-- Towers -->
+  <rect x="228" y="260" width="24" height="30" rx="3" fill="#d4c5a9" stroke="#a8967e" stroke-width="1.5"/>
+  <rect x="468" y="250" width="24" height="30" rx="3" fill="#d4c5a9" stroke="#a8967e" stroke-width="1.5"/>
+  <rect x="628" y="210" width="24" height="30" rx="3" fill="#d4c5a9" stroke="#a8967e" stroke-width="1.5"/>
+  <rect x="788" y="250" width="24" height="30" rx="3" fill="#d4c5a9" stroke="#a8967e" stroke-width="1.5"/>
+  <rect x="948" y="250" width="24" height="30" rx="3" fill="#d4c5a9" stroke="#a8967e" stroke-width="1.5"/>
+  <!-- Title -->
+  <text x="600" y="500" text-anchor="middle" font-family="system-ui, sans-serif" font-size="52" font-weight="800" fill="white" letter-spacing="2">CN Rover</text>
+  <text x="600" y="550" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" fill="#a7f3d0" letter-spacing="1">Explore China, Your Way</text>
+</svg>

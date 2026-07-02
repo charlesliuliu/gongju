@@ -3,23 +3,12 @@ import { Link } from '@/i18n/navigation';
 
 export default async function Footer() {
   const t = await getTranslations('global');
-  const tt = await getTranslations('tools');
-
-  const footerTools = [
-    { slug: 'concrete-calculator', label: tt('concreteTitle') },
-    { slug: 'roof-pitch-calculator', label: tt('roofingTitle') },
-    { slug: 'flooring-calculator', label: tt('flooringTitle') },
-    { slug: 'paint-calculator', label: tt('paintTitle') },
-    { slug: 'lumber-calculator', label: tt('lumberTitle') },
-    { slug: 'deck-calculator', label: tt('deckTitle') },
-    { slug: 'drywall-calculator', label: tt('drywallTitle') },
-    { slug: 'fence-calculator', label: tt('fenceTitle') },
-  ];
 
   return (
     <footer className="bg-gray-50 border-t border-gray-100 mt-auto">
       <div className="container-custom py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Brand */}
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-4">App Guidebook</h3>
             <p className="text-gray-600 text-sm">
@@ -27,19 +16,7 @@ export default async function Footer() {
             </p>
           </div>
 
-          <div>
-            <h4 className="font-semibold text-gray-900 mb-4">{t('popularTools')}</h4>
-            <ul className="space-y-2 text-sm">
-              {footerTools.map((tool) => (
-                <li key={tool.slug}>
-                  <Link href={`/tools/${tool.slug}`} className="text-gray-600 hover:text-gray-900">
-                    {tool.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
+          {/* Guides & Resources — prioritized first */}
           <div>
             <h4 className="font-semibold text-gray-900 mb-4">{t('resources')}</h4>
             <ul className="space-y-2 text-sm">
@@ -53,15 +30,36 @@ export default async function Footer() {
                   {t('faq')}
                 </Link>
               </li>
+              <li>
+                <Link href="/about" className="text-gray-600 hover:text-gray-900">
+                  {t('about')}
+                </Link>
+              </li>
             </ul>
           </div>
 
+          {/* Tools — single entry, not a list */}
+          <div>
+            <h4 className="font-semibold text-gray-900 mb-4">{t('tools')}</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/tools" className="text-gray-600 hover:text-gray-900">
+                  {t('allTools')}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact */}
           <div>
             <h4 className="font-semibold text-gray-900 mb-4">{t('contact')}</h4>
             <p className="text-gray-600 text-sm">
-              <a href="mailto:l15670751903@163.com" className="hover:text-gray-900">
-                l15670751903@163.com
+              <a href="mailto:contact@appguidebook.com" className="hover:text-gray-900">
+                contact@appguidebook.com
               </a>
+            </p>
+            <p className="text-gray-500 text-xs mt-2">
+              {t('location')}
             </p>
           </div>
         </div>

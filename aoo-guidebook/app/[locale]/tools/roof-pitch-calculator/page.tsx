@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation';
 import RoofPitchCalculator from '@/components/tools/RoofPitchCalculator';
 import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import CategoryIllustration from '@/components/ui/CategoryIllustration';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -21,8 +22,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: getLocalizedAlternates(locale, '/tools/roof-pitch-calculator'),
     openGraph: {
-      title: 'Roof Pitch Calculator - Free Online Tool',
-      description: 'Calculate roof pitch, slope, angle, and rafter length. Free online roofing calculator.',
+      title: 'Roof Pitch Calculator',
+      description: 'Calculate roof pitch, slope, angle, and rafter length for your roofing project.',
       url: 'https://appguidebook.com/tools/roof-pitch-calculator',
       type: 'website',
     },
@@ -54,6 +55,7 @@ export default async function RoofPitchCalculatorPage({ params }: { params: Prom
             {t('pageDesc')}
           </p>
         </header>
+          <CategoryIllustration category="roofing" />
 
         {/* Calculator */}
         <RoofPitchCalculator />

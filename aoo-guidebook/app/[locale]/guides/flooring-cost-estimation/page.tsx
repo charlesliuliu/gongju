@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { Link } from '@/i18n/navigation';
 import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs, ArticleJsonLd } from '@/components/ui/Breadcrumbs';
+import AuthorBio from '@/components/ui/AuthorBio';
+import CategoryIllustration from '@/components/ui/CategoryIllustration';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -35,18 +37,26 @@ export default async function FlooringCostPage({ params }: { params: Promise<{ l
   const tGuides = await getTranslations({ locale, namespace: 'guides' });
   const tGlobal = await getTranslations({ locale, namespace: 'global' });
 
+  const tableRows = [
+    { type: t('tableTypeHardwood'), mat: t('costHardwood'), install: t('costHardwoodInstall'), life: t('hardwoodLife') },
+    { type: t('tableTypeLaminate'), mat: t('costLaminate'), install: t('costLaminateInstall'), life: t('laminateLife') },
+    { type: t('tableTypeVinyl'), mat: t('costVinyl'), install: t('costVinylInstall'), life: t('vinylLife') },
+    { type: t('tableTypeTile'), mat: t('costTile'), install: t('costTileInstall'), life: t('tileLife') },
+    { type: t('tableTypeCarpet'), mat: t('costCarpet'), install: t('costCarpetInstall'), life: t('carpetLife') },
+  ];
+
   return (
     <div className="py-12">
       <article className="container-custom max-w-4xl">
-        {/* Header */}
+        {/* Breadcrumbs + Header */}
         <header className="mb-10">
           <Breadcrumbs
             items={[
               { label: tGuides('title'), href: '/guides' },
               { label: tGuides('flooringCostGuide') },
             ]}
-           locale={locale}
-/>
+            locale={locale}
+          />
           <ArticleJsonLd path="/guides/flooring-cost-estimation" locale={locale} headline={tGuides('flooringCostGuide')}
             description={tGuides('flooringCostDesc')}
           />
@@ -63,12 +73,15 @@ export default async function FlooringCostPage({ params }: { params: Promise<{ l
           </div>
         </header>
 
+        <AuthorBio locale={locale} />
+        <CategoryIllustration category="flooring" caption={t('illustrationCaption')} />
+
         {/* Intro */}
         <section className="prose prose-gray max-w-none mb-10">
           <p>{t('intro')}</p>
         </section>
 
-        {/* Cost Overview */}
+        {/* Cost Overview Table */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-2">{t('overviewTitle')}</h2>
           <p className="text-gray-500 mb-5">{t('overviewDesc')}</p>
@@ -83,15 +96,9 @@ export default async function FlooringCostPage({ params }: { params: Promise<{ l
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
-                {[
-                  { title: t('costHardwood'), mat: t('costHardwood'), install: t('costHardwoodInstall'), life: t('hardwoodLife') },
-                  { title: t('costLaminate'), mat: t('costLaminate'), install: t('costLaminateInstall'), life: t('laminateLife') },
-                  { title: t('costVinyl'), mat: t('costVinyl'), install: t('costVinylInstall'), life: t('vinylLife') },
-                  { title: t('costTile'), mat: t('costTile'), install: t('costTileInstall'), life: t('tileLife') },
-                  { title: t('costCarpet'), mat: t('costCarpet'), install: t('costCarpetInstall'), life: t('carpetLife') },
-                ].map((row, i) => (
+                {tableRows.map((row, i) => (
                   <tr key={i} className="hover:bg-gray-50/50">
-                    <td className="py-3 px-4 font-medium text-gray-900">{row.title}</td>
+                    <td className="py-3 px-4 font-medium text-gray-900">{row.type}</td>
                     <td className="py-3 px-4 text-gray-600">{row.mat}</td>
                     <td className="py-3 px-4 text-gray-600">{row.install}</td>
                     <td className="py-3 px-4 text-gray-600">{row.life}</td>
@@ -155,14 +162,57 @@ export default async function FlooringCostPage({ params }: { params: Promise<{ l
           </div>
         </section>
 
-        {/* CTA */}
-        <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 text-center">
-          <h3 className="text-xl font-bold text-gray-900 mb-2">{tGuides('flooringCalcGuide')}</h3>
-          <p className="text-gray-600 mb-4">{tGuides('flooringCalcDesc')}</p>
-          <Link href="/tools/flooring-calculator" className="btn-primary inline-block">
-            {tGuides('flooringCalcGuide')}
+        {/* FAQ */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('faqTitle')}</h2>
+          <div className="space-y-4">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <details key={i} className="group border border-gray-200 rounded-xl p-5 cursor-pointer hover:border-gray-300 transition-colors">
+                <summary className="font-semibold text-gray-900 list-none flex items-center justify-between gap-3">
+                  {t(`faqQ${i}`)}
+                  <span className="text-gray-400 group-open:rotate-180 transition-transform text-lg flex-shrink-0">▾</span>
+                </summary>
+                <p className="text-gray-600 text-sm leading-relaxed mt-3 pl-0">{t(`faqA${i}`)}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        {/* Single neutral CTA — only ONE, at the very end */}
+        <div className="border border-gray-200 rounded-2xl p-8 my-12 text-center bg-gray-50/50">
+          <p className="text-gray-600 mb-5 max-w-xl mx-auto leading-relaxed text-sm">{t('ctaDesc')}</p>
+          <Link
+            href="/tools/flooring-calculator"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-white hover:border-gray-400 transition-colors"
+          >
+            {t('ctaBtn')}
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
           </Link>
         </div>
+
+        {/* Related Guides — pure article links, no tool cards */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-5">{t('relatedTitle')}</h2>
+          <div className="grid sm:grid-cols-3 gap-4">
+            <Link href="/guides/how-to-calculate-flooring-materials" className="card hover:shadow-lg hover:-translate-y-0.5 transition-all block">
+              <div className="text-sm font-bold text-primary-600 mb-1">{tGlobal('guides')}</div>
+              <div className="font-semibold text-gray-900">{tGuides('flooringCalcGuide')}</div>
+              <div className="text-xs text-gray-500 mt-1">{tGuides('flooringCalcDesc')}</div>
+            </Link>
+            <Link href="/guides/flooring-types-comparison" className="card hover:shadow-lg hover:-translate-y-0.5 transition-all block">
+              <div className="text-sm font-bold text-primary-600 mb-1">{tGlobal('guides')}</div>
+              <div className="font-semibold text-gray-900">{tGuides('flooringTypesGuide')}</div>
+              <div className="text-xs text-gray-500 mt-1">{tGuides('flooringTypesDesc')}</div>
+            </Link>
+            <Link href="/guides/diy-flooring-mistakes" className="card hover:shadow-lg hover:-translate-y-0.5 transition-all block">
+              <div className="text-sm font-bold text-primary-600 mb-1">{tGlobal('guides')}</div>
+              <div className="font-semibold text-gray-900">{tGuides('flooringMistakesGuide')}</div>
+              <div className="text-xs text-gray-500 mt-1">{tGuides('flooringMistakesDesc')}</div>
+            </Link>
+          </div>
+        </section>
       </article>
     </div>
   );

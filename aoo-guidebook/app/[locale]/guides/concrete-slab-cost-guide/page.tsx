@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { Link } from '@/i18n/navigation';
 import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs, ArticleJsonLd } from '@/components/ui/Breadcrumbs';
+import AuthorBio from '@/components/ui/AuthorBio';
+import CategoryIllustration from '@/components/ui/CategoryIllustration';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -17,6 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'concrete slab cost per square foot',
       'concrete patio cost',
       'concrete driveway cost',
+      'concrete slab cost FAQ',
     ],
     alternates: getLocalizedAlternates(locale, '/guides/concrete-slab-cost-guide'),
     openGraph: {
@@ -32,20 +35,18 @@ export default async function ConcreteSlabCostGuidePage({ params }: { params: Pr
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'slabCostPage' });
   const tGuides = await getTranslations({ locale, namespace: 'guides' });
-  const tGlobal = await getTranslations({ locale, namespace: 'global' });
 
   return (
     <div className="py-12">
       <article className="container-custom max-w-4xl">
-        {/* Header */}
         <header className="mb-10">
           <Breadcrumbs
             items={[
               { label: tGuides('title'), href: '/guides' },
               { label: tGuides('slabCostGuide') },
             ]}
-           locale={locale}
-/>
+            locale={locale}
+          />
           <ArticleJsonLd path="/guides/concrete-slab-cost-guide" locale={locale} headline={tGuides('slabCostGuide')}
             description={tGuides('slabCostDesc')}
           />
@@ -61,8 +62,10 @@ export default async function ConcreteSlabCostGuidePage({ params }: { params: Pr
             <span>{t('readTime')}</span>
           </div>
         </header>
+        <AuthorBio locale={locale} />
+        <CategoryIllustration category="concrete" caption={t('illustrationCaption')} />
 
-        {/* Quick Stats */}
+        {/* Quick Stats — data display only, no CTA */}
         <div className="bg-gradient-to-br from-primary-600 to-primary-700 rounded-2xl p-6 mb-12">
           <h2 className="text-sm font-semibold text-primary-100 uppercase tracking-wider mb-6 text-center">
             {t('quickStatsTitle')}
@@ -81,20 +84,6 @@ export default async function ConcreteSlabCostGuidePage({ params }: { params: Pr
               <p className="text-sm text-primary-200 mt-1">{t('statStamped')}</p>
             </div>
           </div>
-        </div>
-
-        {/* Calculator CTA */}
-        <div className="bg-gray-50 border border-gray-200 rounded-2xl p-5 mb-12 flex items-center justify-between flex-wrap gap-4">
-          <div>
-            <h3 className="font-semibold text-gray-900">{t('ctaBannerTitle')}</h3>
-            <p className="text-sm text-gray-500">{t('ctaBannerDesc')}</p>
-          </div>
-          <Link href="/tools/concrete-calculator" className="btn-primary inline-flex items-center gap-2">
-            {t('ctaBannerBtn')}
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </Link>
         </div>
 
         {/* Introduction */}
@@ -150,6 +139,13 @@ export default async function ConcreteSlabCostGuidePage({ params }: { params: Pr
               </div>
             ))}
           </div>
+
+          <p className="text-sm text-gray-500 mt-5 leading-relaxed">
+            {t('calcGuideLinkText')}{' '}
+            <Link href="/guides/how-to-calculate-concrete" className="text-primary-600 hover:text-primary-700 underline underline-offset-2 font-medium">
+              {tGuides('concreteCalcGuide')}
+            </Link>
+          </p>
         </section>
 
         {/* Project Examples */}
@@ -260,11 +256,35 @@ export default async function ConcreteSlabCostGuidePage({ params }: { params: Pr
           </ol>
         </section>
 
-        {/* Bottom CTA */}
-        <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8 my-12 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">{t('ctaTitle')}</h2>
-          <p className="text-gray-500 mb-6 max-w-md mx-auto">{t('ctaDesc')}</p>
-          <Link href="/tools/concrete-calculator" className="btn-primary inline-flex items-center gap-2">
+        {/* FAQ — NEW: purely educational */}
+        <section className="mb-14">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('faqTitle')}</h2>
+          <div className="space-y-4">
+            {(['1', '2', '3', '4', '5'] as const).map((n) => (
+              <details key={n} className="bg-white border border-gray-200 rounded-xl group">
+                <summary className="px-6 py-4 cursor-pointer font-medium text-gray-900 hover:text-primary-700 transition-colors list-none [&::-webkit-details-marker]:hidden flex items-center justify-between">
+                  {t(`faqQ${n}`)}
+                  <svg className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-6 pb-5 text-gray-600 text-sm leading-relaxed border-t border-gray-100 pt-4">
+                  {t(`faqA${n}`)}
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        {/* Single neutral CTA — only ONE, at the very end */}
+        <div className="border border-gray-200 rounded-2xl p-8 my-12 text-center bg-gray-50/50">
+          <p className="text-gray-600 mb-5 max-w-xl mx-auto leading-relaxed text-sm">
+            {t('ctaDesc')}
+          </p>
+          <Link
+            href="/tools/concrete-calculator"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-white hover:border-gray-400 transition-colors"
+          >
             {t('ctaBtn')}
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -272,7 +292,7 @@ export default async function ConcreteSlabCostGuidePage({ params }: { params: Pr
           </Link>
         </div>
 
-        {/* Related */}
+        {/* Related Guides */}
         <div className="border-t border-gray-200 pt-12">
           <h2 className="text-xl font-bold text-gray-900 mb-6">{tGuides('relatedGuides')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

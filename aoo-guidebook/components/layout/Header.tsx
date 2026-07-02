@@ -15,6 +15,9 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-2 text-gray-900 hover:text-gray-900">
           <span className="text-2xl font-bold">App</span>
           <span className="text-lg text-gray-600">Guidebook</span>
+          <span className="hidden sm:inline text-xs text-construction-600 bg-construction-50 px-2 py-0.5 rounded-full font-medium ml-1">
+            {t('constructionTagline')}
+          </span>
         </Link>
 
         <div className="hidden md:flex items-center gap-6">
@@ -23,6 +26,9 @@ export default function Header() {
           </Link>
           <Link href="/guides" className="text-gray-600 hover:text-gray-900 text-sm">
             {t('guides')}
+          </Link>
+          <Link href="/about" className="text-gray-600 hover:text-gray-900 text-sm">
+            {t('about')}
           </Link>
           <Link href="/faq" className="text-gray-600 hover:text-gray-900 text-sm">
             {t('faq')}
@@ -63,6 +69,13 @@ export default function Header() {
             onClick={() => setMenuOpen(false)}
           >
             {t('guides')}
+          </Link>
+          <Link
+            href="/about"
+            className="block px-4 py-3 text-gray-600 hover:bg-gray-50"
+            onClick={() => setMenuOpen(false)}
+          >
+            {t('about')}
           </Link>
           <Link
             href="/faq"

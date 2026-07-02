@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation';
 import ConcreteCalculator from '@/components/tools/ConcreteCalculator';
 import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import CategoryIllustration from '@/components/ui/CategoryIllustration';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -58,6 +59,8 @@ export default async function ConcreteCalculatorPage({ params }: Props) {
             {t('desc')}
           </p>
         </div>
+
+        <CategoryIllustration category="concrete" />
 
         {/* Calculator Component */}
         <ConcreteCalculator />

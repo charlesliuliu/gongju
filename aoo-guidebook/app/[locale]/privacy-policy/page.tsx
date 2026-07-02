@@ -67,8 +67,8 @@ export default async function PrivacyPolicyPage({ params }: Props) {
           <h2 className="text-2xl font-semibold text-gray-900 mb-3">{t('contact')}</h2>
           <p className="text-gray-700">
             {t('contactDesc')}{' '}
-            <a href="mailto:l15670751903@163.com" className="text-primary-600 hover:underline">
-              l15670751903@163.com
+            <a href="mailto:contact@appguidebook.com" className="text-primary-600 hover:underline">
+              contact@appguidebook.com
             </a>
           </p>
         </section>

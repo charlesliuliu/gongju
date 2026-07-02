@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { Link } from '@/i18n/navigation';
 import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs, ArticleJsonLd } from '@/components/ui/Breadcrumbs';
+import AuthorBio from '@/components/ui/AuthorBio';
+import CategoryIllustration from '@/components/ui/CategoryIllustration';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -17,6 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'calculate concrete for slab',
       'concrete estimation',
       'concrete math',
+      'concrete calculation FAQ',
     ],
     alternates: getLocalizedAlternates(locale, '/guides/how-to-calculate-concrete'),
     openGraph: {
@@ -68,20 +71,18 @@ export default async function HowToCalculateConcretePage({ params }: { params: P
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'concreteCalcPage' });
   const tGuides = await getTranslations({ locale, namespace: 'guides' });
-  const tGlobal = await getTranslations({ locale, namespace: 'global' });
 
   return (
     <div className="py-12">
       <article className="container-custom max-w-4xl">
-        {/* Article Header */}
         <header className="mb-10">
           <Breadcrumbs
             items={[
               { label: tGuides('title'), href: '/guides' },
               { label: tGuides('concreteCalcGuide') },
             ]}
-           locale={locale}
-/>
+            locale={locale}
+          />
           <ArticleJsonLd path="/guides/how-to-calculate-concrete" locale={locale} headline={tGuides('concreteCalcGuide')}
             description={tGuides('concreteCalcDesc')}
           />
@@ -97,8 +98,10 @@ export default async function HowToCalculateConcretePage({ params }: { params: P
             <span>{t('readTime')}</span>
           </div>
         </header>
+        <AuthorBio locale={locale} />
+        <CategoryIllustration category="concrete" caption={t('illustrationCaption')} />
 
-        {/* Table of Contents */}
+        {/* Table of Contents — clean, no CTA */}
         <nav className="bg-gray-50 border border-gray-200 rounded-2xl p-6 mb-12">
           <h2 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">{t('tocTitle')}</h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
@@ -112,20 +115,6 @@ export default async function HowToCalculateConcretePage({ params }: { params: P
             <li><a href="#mistakes" className="text-primary-600 hover:underline">{t('tocMistakes')}</a></li>
           </ul>
         </nav>
-
-        {/* Calculator CTA */}
-        <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-6 mb-12 flex items-center justify-between flex-wrap gap-4">
-          <div>
-            <h3 className="font-semibold text-white text-lg">{t('ctaBannerTitle')}</h3>
-            <p className="text-primary-100 text-sm">{t('ctaBannerDesc')}</p>
-          </div>
-          <Link href="/tools/concrete-calculator" className="inline-flex items-center gap-2 bg-white text-primary-700 px-6 py-3 rounded-xl font-semibold text-sm hover:bg-primary-50 transition-all duration-200">
-            {t('ctaBannerBtn')}
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </Link>
-        </div>
 
         {/* Introduction */}
         <p className="text-lg text-gray-700 leading-relaxed mb-12">{t('intro')}</p>
@@ -263,6 +252,12 @@ export default async function HowToCalculateConcretePage({ params }: { params: P
               <li>{t('costAdd5')}</li>
             </ul>
           </TipBox>
+          <p className="text-sm text-gray-500 mt-4 leading-relaxed">
+            {t('costGuideLinkText')}{' '}
+            <Link href="/guides/concrete-slab-cost-guide" className="text-primary-600 hover:text-primary-700 underline underline-offset-2 font-medium">
+              {tGuides('slabCostGuide')}
+            </Link>
+          </p>
         </section>
 
         {/* Pro Tips */}
@@ -301,6 +296,21 @@ export default async function HowToCalculateConcretePage({ params }: { params: P
           </div>
         </section>
 
+        {/* Climate Zone Considerations */}
+        <section className="mb-14 bg-blue-50 border border-blue-200 rounded-2xl p-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-5">{t('climateTitle')}</h2>
+          <p className="text-gray-700 leading-relaxed mb-6">{t('climateP1')}</p>
+          <div className="space-y-4">
+            {(['Cold', 'Temperate', 'Hot', 'Wet'] as const).map((zone) => (
+              <div key={zone} className="bg-white rounded-xl p-5 border border-blue-100">
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  {t(`climate${zone}`)}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Conclusion */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('conclusionTitle')}</h2>
@@ -308,11 +318,35 @@ export default async function HowToCalculateConcretePage({ params }: { params: P
           <p className="text-gray-700 leading-relaxed">{t('conclusionP2')}</p>
         </section>
 
-        {/* Bottom CTA */}
-        <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8 my-12 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">{t('ctaTitle')}</h2>
-          <p className="text-gray-500 mb-6 max-w-md mx-auto">{t('ctaDesc')}</p>
-          <Link href="/tools/concrete-calculator" className="btn-primary inline-flex items-center gap-2">
+        {/* FAQ — NEW: purely educational */}
+        <section className="mb-14">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('faqTitle')}</h2>
+          <div className="space-y-4">
+            {(['1', '2', '3', '4', '5'] as const).map((n) => (
+              <details key={n} className="bg-white border border-gray-200 rounded-xl group">
+                <summary className="px-6 py-4 cursor-pointer font-medium text-gray-900 hover:text-primary-700 transition-colors list-none [&::-webkit-details-marker]:hidden flex items-center justify-between">
+                  {t(`faqQ${n}`)}
+                  <svg className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-6 pb-5 text-gray-600 text-sm leading-relaxed border-t border-gray-100 pt-4">
+                  {t(`faqA${n}`)}
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        {/* Single neutral CTA — only ONE, at the very end */}
+        <div className="border border-gray-200 rounded-2xl p-8 my-12 text-center bg-gray-50/50">
+          <p className="text-gray-600 mb-5 max-w-xl mx-auto leading-relaxed text-sm">
+            {t('ctaDesc')}
+          </p>
+          <Link
+            href="/tools/concrete-calculator"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-white hover:border-gray-400 transition-colors"
+          >
             {t('ctaBtn')}
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -320,7 +354,7 @@ export default async function HowToCalculateConcretePage({ params }: { params: P
           </Link>
         </div>
 
-        {/* Related */}
+        {/* Related Guides */}
         <div className="border-t border-gray-200 pt-12">
           <h2 className="text-xl font-bold text-gray-900 mb-6">{t('relatedTitle')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

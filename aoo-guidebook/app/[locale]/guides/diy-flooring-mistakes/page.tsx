@@ -4,6 +4,8 @@ import type { ReactNode } from 'react';
 import { Link } from '@/i18n/navigation';
 import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs, ArticleJsonLd } from '@/components/ui/Breadcrumbs';
+import AuthorBio from '@/components/ui/AuthorBio';
+import CategoryIllustration from '@/components/ui/CategoryIllustration';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -11,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title: t('flooringMistakesGuide'),
     description: t('flooringMistakesDesc'),
-    keywords: ['DIY flooring mistakes','flooring installation tips','common flooring errors','how to install flooring','flooring waste factor','expansion gap','subfloor preparation','flooring plank direction','flooring calculator'],
+    keywords: ['DIY flooring mistakes','flooring installation tips','common flooring errors','how to install flooring','flooring waste factor','expansion gap','subfloor preparation','flooring plank direction','flooring FAQ'],
     alternates: getLocalizedAlternates(locale, '/guides/diy-flooring-mistakes'),
     openGraph: {
       title: `${t('flooringMistakesGuide')} | App Guidebook`,
@@ -54,6 +56,8 @@ export default async function FlooringMistakesPage({ params }: { params: Promise
           <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">{t('subtitle')}</p>
           <div className="flex items-center justify-center gap-4 mt-6 text-sm text-gray-400"><span>🕐 {t('readTime')}</span><span className="text-gray-200">·</span><span>🏷️ Flooring</span></div>
         </header>
+        <AuthorBio locale={locale} />
+        <CategoryIllustration category="flooring" caption={t('illustrationCaption')} />
 
         {/* ── TL;DR ── */}
         <section className="mb-14 bg-gradient-to-r from-amber-50 to-yellow-50 border-2 border-yellow-300 rounded-2xl p-6 md:p-8">
@@ -80,49 +84,37 @@ export default async function FlooringMistakesPage({ params }: { params: Promise
         {/* ── Scene 1: Measured Wrong ── */}
         <SceneCard tag={SCENE_TAGS[1]} icon={SCENE_ICONS[1]} tagColor={TAG_COLORS[1]} bgGradient={BG_GRADIENTS[1]} index={1} cost={t('wasteCost1')}>
           <QuoteBubble text={t('scene1Bubble')} mood="bad" />
-          <div className="grid md:grid-cols-5 gap-4 mt-5">
-            <div className="md:col-span-3 space-y-4">
-              <MistakeBlock wrong={t('scene1Text').split('.')[0] + '.'} right="Measure twice. Always add 10-15% waste factor for cuts, mistakes, and odd corners. Let the calculator handle the math." />
-            </div>
-            <div className="md:col-span-2 bg-primary-50 border border-primary-200 rounded-xl p-4 text-center flex flex-col justify-center">
-              <span className="text-3xl mb-1">🧮</span>
-              <div className="text-sm font-bold text-primary-800 mb-2">{t('calculatorName')}</div>
-              <Link href="/tools/flooring-calculator" className="btn-primary text-xs">Try Now →</Link>
-            </div>
+          <div className="mt-5">
+            <p className="text-gray-700 leading-relaxed">{t('scene1Text')}</p>
           </div>
         </SceneCard>
 
         {/* ── Scene 2: Subfloor ── */}
         <SceneCard tag={SCENE_TAGS[2]} icon={SCENE_ICONS[2]} tagColor={TAG_COLORS[2]} bgGradient={BG_GRADIENTS[2]} index={2} cost={t('wasteCost2')}>
           <QuoteBubble text={t('scene2Bubble')} mood="bad" />
-          <div className="mt-5 space-y-4">
-            <MistakeBlock
-              wrong="Skipped subfloor prep. The old floor looked flat enough."
-              right="Check level (3/16″ max variation over 10 ft), test moisture, use self-leveling compound. $15 now > $500 redo later."
-            />
-            <div className="grid sm:grid-cols-3 gap-3">
-              {['Check level with long straightedge','Test moisture (concrete: &lt; 4%)','Clean thoroughly before laying'].map((item, i) => (
-                <div key={i} className="bg-white border border-gray-200 rounded-xl p-3 flex items-start gap-2">
-                  <span className="text-green-500 font-bold">✓</span>
-                  <span className="text-sm text-gray-700">{item}</span>
-                </div>
-              ))}
-            </div>
+          <div className="mt-5">
+            <p className="text-gray-700 leading-relaxed">{t('scene2Text')}</p>
+            <p className="text-gray-500 text-sm mt-3 leading-relaxed">
+              {t.rich('scene2ExtraText', {
+                link: (chunks) => (
+                  <Link href="/guides/how-to-calculate-flooring-materials" className="text-primary-600 underline hover:text-primary-800 transition-colors font-medium">
+                    {chunks}
+                  </Link>
+                ),
+              })}
+            </p>
           </div>
         </SceneCard>
 
         {/* ── Scene 3: Expansion Gap ── */}
         <SceneCard tag={SCENE_TAGS[3]} icon={SCENE_ICONS[3]} tagColor={TAG_COLORS[3]} bgGradient={BG_GRADIENTS[3]} index={3} cost={t('wasteCost3')}>
           <QuoteBubble text={t('scene3Bubble')} mood="bad" />
-          <div className="mt-5 space-y-4">
-            <MistakeBlock
-              wrong="Butted planks tight against every wall. Looked clean for 3 months."
-              right="Leave 1/4″ (6mm) gap around all walls, doorways, transitions. Baseboards hide the gap — that's their entire purpose."
-            />
-            <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 text-center">
+          <div className="mt-5">
+            <p className="text-gray-700 leading-relaxed">{t('scene3Text')}</p>
+            <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 text-center mt-4">
               <span className="text-3xl block mb-2">📐</span>
-              <p className="text-lg font-bold text-amber-800">A 20-ft oak floor expands over ½″ between winter and summer.</p>
-              <p className="text-sm text-amber-600 mt-1">That gap isn't optional — it's physics.</p>
+              <p className="text-lg font-bold text-amber-800">{t('scene3CalloutTitle')}</p>
+              <p className="text-sm text-amber-600 mt-1">{t('scene3CalloutDesc')}</p>
             </div>
           </div>
         </SceneCard>
@@ -130,42 +122,16 @@ export default async function FlooringMistakesPage({ params }: { params: Promise
         {/* ── Scene 4: Wrong Direction ── */}
         <SceneCard tag={SCENE_TAGS[4]} icon={SCENE_ICONS[4]} tagColor={TAG_COLORS[4]} bgGradient={BG_GRADIENTS[4]} index={4} cost={t('wasteCost4')}>
           <QuoteBubble text={t('scene4Bubble')} mood="bad" />
-          <div className="mt-5 space-y-4">
-            <MistakeBlock
-              wrong="Ran planks parallel to the long wall. Room looked like a bowling alley."
-              right="Run perpendicular to the main window light source, parallel to primary sight line when entering. Rooms feel wider, seams vanish in natural light."
-            />
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-red-50/70 border border-red-200 rounded-xl p-4 text-center">
-                <div className="text-3xl mb-1">⬆️⬇️</div>
-                <div className="font-bold text-red-700 text-sm">Wrong: Parallel to long wall</div>
-                <div className="text-xs text-red-500 mt-1">Narrows the room. Seams catch light.</div>
-              </div>
-              <div className="bg-green-50/70 border border-green-200 rounded-xl p-4 text-center">
-                <div className="text-3xl mb-1">⬅️➡️</div>
-                <div className="font-bold text-green-700 text-sm">Right: Perpendicular to window</div>
-                <div className="text-xs text-green-600 mt-1">Widens the room. Seams invisible.</div>
-              </div>
-            </div>
+          <div className="mt-5">
+            <p className="text-gray-700 leading-relaxed">{t('scene4Text')}</p>
           </div>
         </SceneCard>
 
         {/* ── Scene 5: Mental Math ── */}
         <SceneCard tag={SCENE_TAGS[5]} icon={SCENE_ICONS[5]} tagColor={TAG_COLORS[5]} bgGradient={BG_GRADIENTS[5]} index={5} cost={t('wasteCost5')}>
           <QuoteBubble text={t('scene5Bubble')} mood="bad" />
-          <div className="mt-5 space-y-4">
-            <MistakeBlock
-              wrong="Mental math at the hardware store. Bought nearly 30% too many boxes."
-              right="Enter room dimensions once → get the exact box count. The calculator factors in waste percentage automatically."
-            />
-            <div className="bg-gradient-to-r from-primary-50 to-primary-100 border border-primary-200 rounded-2xl p-5 flex items-center gap-4">
-              <span className="text-5xl">🧮</span>
-              <div className="flex-1">
-                <div className="font-bold text-gray-900 text-lg">{t('calculatorName')}</div>
-                <div className="text-sm text-gray-600">{t('calculatorDesc')}</div>
-              </div>
-              <Link href="/tools/flooring-calculator" className="btn-primary whitespace-nowrap">Try Now →</Link>
-            </div>
+          <div className="mt-5">
+            <p className="text-gray-700 leading-relaxed">{t('scene5Text')}</p>
           </div>
         </SceneCard>
 
@@ -185,24 +151,24 @@ export default async function FlooringMistakesPage({ params }: { params: Promise
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="bg-gray-900 text-white">
-                      <th className="text-left px-4 py-2.5 font-semibold">Check</th>
+                      <th className="text-left px-4 py-2.5 font-semibold">{t('scoreCheck')}</th>
                       <th className="text-left px-4 py-2.5 font-semibold text-red-300">{t('round1')}</th>
                       <th className="text-left px-4 py-2.5 font-semibold text-green-300">{t('round2')}</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {[
-                      ['Measured','✗ Guessed once','✓ Twice + waste factor'],
-                      ['Subfloor','✗ Skipped entirely','✓ Leveled & moisture-tested'],
-                      ['Expansion','✗ Tight to wall','✓ 1/4″ gap all around'],
-                      ['Direction','✗ Parallel to long wall','✓ Perpendicular to window'],
-                      ['Materials','✗ Mental math','✓ Calculator — exact count'],
-                      ['Total Cost','Hundreds wasted','On budget + leftovers for repairs'],
-                    ].map((row, i) => (
+                    {([
+                      ['scoreRow1Check','scoreRow1Bad','scoreRow1Good'],
+                      ['scoreRow2Check','scoreRow2Bad','scoreRow2Good'],
+                      ['scoreRow3Check','scoreRow3Bad','scoreRow3Good'],
+                      ['scoreRow4Check','scoreRow4Bad','scoreRow4Good'],
+                      ['scoreRow5Check','scoreRow5Bad','scoreRow5Good'],
+                      ['scoreRow6Check','scoreRow6Bad','scoreRow6Good'],
+                    ] as const).map(([checkKey, badKey, goodKey], i) => (
                       <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}>
-                        <td className="px-4 py-2.5 font-semibold text-gray-700">{row[0]}</td>
-                        <td className="px-4 py-2.5 text-red-600">{row[1]}</td>
-                        <td className="px-4 py-2.5 text-green-600 font-semibold">{row[2]}</td>
+                        <td className="px-4 py-2.5 font-semibold text-gray-700">{t(checkKey)}</td>
+                        <td className="px-4 py-2.5 text-red-600">{t(badKey)}</td>
+                        <td className="px-4 py-2.5 text-green-600 font-semibold">{t(goodKey)}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -212,9 +178,45 @@ export default async function FlooringMistakesPage({ params }: { params: Promise
           </div>
         </SceneCard>
 
-        {/* ── Related Guides ── */}
-        <section className="mt-16">
-          <h3 className="text-xl font-black text-gray-900 mb-5">{t('relatedTitle')}</h3>
+        {/* ── FAQ ── */}
+        <section className="mb-14">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('faqTitle')}</h2>
+          <div className="space-y-4">
+            {(['1', '2', '3', '4', '5'] as const).map((n) => (
+              <details key={n} className="bg-white border border-gray-200 rounded-xl group">
+                <summary className="px-6 py-4 cursor-pointer font-medium text-gray-900 hover:text-primary-700 transition-colors list-none [&::-webkit-details-marker]:hidden flex items-center justify-between">
+                  {t(`faqQ${n}`)}
+                  <svg className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-6 pb-5 text-gray-600 text-sm leading-relaxed border-t border-gray-100 pt-4">
+                  {t(`faqA${n}`)}
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Single neutral CTA ── */}
+        <div className="border border-gray-200 rounded-2xl p-8 my-12 text-center bg-gray-50/50">
+          <p className="text-gray-600 mb-5 max-w-xl mx-auto leading-relaxed text-sm">
+            {t('ctaDesc')}
+          </p>
+          <Link
+            href="/tools/flooring-calculator"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-white hover:border-gray-400 transition-colors"
+          >
+            {t('ctaBtn')}
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
+        </div>
+
+        {/* ── Related Guides (guides only, no tool cards) ── */}
+        <section className="border-t border-gray-200 pt-12">
+          <h2 className="text-xl font-bold text-gray-900 mb-6">{t('relatedTitle')}</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             <Link href="/guides/how-to-calculate-flooring-materials" className="card hover:shadow-lg hover:-translate-y-0.5 transition-all block">
               <div className="text-sm font-bold text-primary-600 mb-1">📐 Guide</div>
@@ -231,23 +233,8 @@ export default async function FlooringMistakesPage({ params }: { params: Promise
               <div className="font-semibold text-gray-900">{tGuides('flooringCostGuide')}</div>
               <div className="text-xs text-gray-500 mt-1">{tGuides('flooringCostDesc')}</div>
             </Link>
-            <Link href="/tools/flooring-calculator" className="card hover:shadow-lg hover:-translate-y-0.5 transition-all block bg-primary-50 border-primary-200">
-              <div className="text-sm font-bold text-primary-600 mb-1">🧮 Tool</div>
-              <div className="font-semibold text-gray-900">{t('calculatorName')}</div>
-              <div className="text-xs text-gray-500 mt-1">{t('calculatorDesc')}</div>
-            </Link>
           </div>
         </section>
-
-        {/* ── CTA ── */}
-        <div className="mt-14 bg-gradient-to-br from-primary-600 to-primary-800 rounded-2xl p-8 md:p-10 text-center text-white shadow-xl">
-          <span className="text-5xl block mb-4">🛠️</span>
-          <h3 className="text-2xl md:text-3xl font-black mb-3">{t('ctaTitle')}</h3>
-          <p className="text-primary-100 mb-6 max-w-md mx-auto">{t('ctaDesc')}</p>
-          <Link href="/tools/flooring-calculator" className="inline-flex items-center gap-2 bg-white text-primary-700 font-bold py-3.5 px-10 rounded-xl text-lg transition-all hover:bg-primary-50 hover:shadow-2xl hover:-translate-y-0.5">
-            {t('tryCalculator')}
-          </Link>
-        </div>
       </article>
     </div>
   );
@@ -284,21 +271,6 @@ function QuoteBubble({ text, mood }: { text: string; mood: 'bad' | 'good' }) {
       <p className={`text-lg md:text-xl font-semibold italic leading-relaxed ${c.text}`}>
         {emoji} &ldquo;{text}&rdquo;
       </p>
-    </div>
-  );
-}
-
-function MistakeBlock({ wrong, right }: { wrong: string; right: string }) {
-  return (
-    <div className="grid md:grid-cols-2 gap-4">
-      <div className="bg-red-50 border border-red-200 rounded-xl p-4">
-        <div className="text-xs font-black text-red-500 uppercase tracking-wide mb-1">❌ What I Did</div>
-        <p className="text-red-800 text-sm leading-relaxed">{wrong}</p>
-      </div>
-      <div className="bg-green-50 border border-green-200 rounded-xl p-4">
-        <div className="text-xs font-black text-green-500 uppercase tracking-wide mb-1">✅ Do This Instead</div>
-        <p className="text-green-800 text-sm leading-relaxed">{right}</p>
-      </div>
     </div>
   );
 }

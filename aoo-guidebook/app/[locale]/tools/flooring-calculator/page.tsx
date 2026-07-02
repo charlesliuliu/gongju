@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation';
 import FlooringCalculator from '@/components/tools/FlooringCalculator';
 import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import CategoryIllustration from '@/components/ui/CategoryIllustration';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: getLocalizedAlternates(locale, '/tools/flooring-calculator'),
     openGraph: {
-      title: 'Flooring Calculator - Free Online Tool',
+      title: 'Flooring Calculator',
       description: 'Calculate how much flooring material you need for any room. Includes waste factor and cost estimation.',
       url: 'https://appguidebook.com/tools/flooring-calculator',
       type: 'website',
@@ -55,6 +56,7 @@ export default async function FlooringCalculatorPage({ params }: { params: Promi
             {t('pageDesc')}
           </p>
         </header>
+          <CategoryIllustration category="flooring" />
 
         {/* Calculator */}
         <FlooringCalculator />

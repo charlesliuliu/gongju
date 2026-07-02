@@ -11,16 +11,20 @@ const routes = [
   { path: '/guides', priority: 0.9, freq: 'weekly' as const },
   { path: '/tools', priority: 0.9, freq: 'weekly' as const },
   { path: '/faq', priority: 0.7, freq: 'monthly' as const },
+  { path: '/about', priority: 0.7, freq: 'monthly' as const },
   { path: '/privacy-policy', priority: 0.3, freq: 'monthly' as const },
   { path: '/terms-of-service', priority: 0.3, freq: 'monthly' as const },
   // Concrete
   { path: '/guides/how-to-calculate-concrete', priority: 0.8, freq: 'weekly' as const },
   { path: '/guides/concrete-slab-cost-guide', priority: 0.8, freq: 'weekly' as const },
   { path: '/guides/concrete-mix-ratios', priority: 0.8, freq: 'weekly' as const },
+  { path: '/guides/diy-concrete-mistakes', priority: 0.8, freq: 'weekly' as const },
+  { path: '/guides/asphalt-vs-concrete-driveway', priority: 0.8, freq: 'weekly' as const },
   // Roofing
   { path: '/guides/how-to-calculate-roof-pitch', priority: 0.8, freq: 'weekly' as const },
   { path: '/guides/roof-pitch-angle-conversion', priority: 0.8, freq: 'weekly' as const },
   { path: '/guides/roofing-materials-guide', priority: 0.8, freq: 'weekly' as const },
+  { path: '/guides/roofing-cost-guide', priority: 0.8, freq: 'weekly' as const },
   // Flooring
   { path: '/guides/how-to-calculate-flooring-materials', priority: 0.8, freq: 'weekly' as const },
   { path: '/guides/flooring-types-comparison', priority: 0.8, freq: 'weekly' as const },
@@ -38,6 +42,7 @@ const routes = [
   { path: '/guides/how-to-build-a-deck', priority: 0.8, freq: 'weekly' as const },
   { path: '/guides/deck-materials-calculator', priority: 0.8, freq: 'weekly' as const },
   { path: '/guides/deck-cost-estimation', priority: 0.8, freq: 'weekly' as const },
+  { path: '/guides/diy-deck-mistakes', priority: 0.8, freq: 'weekly' as const },
   // Drywall
   { path: '/guides/how-to-calculate-drywall', priority: 0.8, freq: 'weekly' as const },
   { path: '/guides/drywall-types-and-sizes', priority: 0.8, freq: 'weekly' as const },
@@ -59,7 +64,7 @@ const routes = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
-  const lastModified = new Date('2026-05-31');
+  const lastModified = new Date('2026-07-02');
 
   for (const locale of locales) {
     for (const route of routes) {

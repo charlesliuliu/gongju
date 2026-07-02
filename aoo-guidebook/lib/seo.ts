@@ -50,6 +50,44 @@ export function organizationSchema() {
     name: 'App Guidebook',
     url: SITE_URL,
     logo: `${SITE_URL}/images/og-default.png`,
-    email: 'l15670751903@163.com',
+    email: 'contact@appguidebook.com',
+    description: 'Free online construction calculators and expert DIY guides for contractors and homeowners.',
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'US',
+    },
+    sameAs: [],
+  };
+}
+
+export function howToSchema(steps: { name: string; text: string }[], locale: string, slug: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: steps.length > 0 ? steps[0].name : '',
+    step: steps.map((step, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: step.name,
+      text: step.text,
+    })),
+  };
+}
+
+export function webApplicationSchema(name: string, description: string, locale: string, slug: string) {
+  const url = `${SITE_URL}/${locale}/tools/${slug}/`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name,
+    url,
+    description,
+    applicationCategory: 'ConstructionApplication',
+    operatingSystem: 'Any',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
   };
 }

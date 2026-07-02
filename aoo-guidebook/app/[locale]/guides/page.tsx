@@ -30,12 +30,15 @@ export default async function GuidesPage({ params }: Props) {
     { slug: 'how-to-calculate-concrete', title: t('concreteCalcGuide'), description: t('concreteCalcDesc'), readTime: t('concreteCalcReadTime'), category: t('concreteCategory') },
     { slug: 'concrete-slab-cost-guide', title: t('slabCostGuide'), description: t('slabCostDesc'), readTime: t('slabCostReadTime'), category: t('concreteCategory') },
     { slug: 'concrete-mix-ratios', title: t('mixRatiosGuide'), description: t('mixRatiosDesc'), readTime: t('mixRatiosReadTime'), category: t('concreteCategory') },
+    { slug: 'diy-concrete-mistakes', title: t('concreteMistakesGuide'), description: t('concreteMistakesDesc'), readTime: t('concreteMistakesReadTime'), category: t('concreteCategory') },
+    { slug: 'asphalt-vs-concrete-driveway', title: t('asphaltConcreteGuide'), description: t('asphaltConcreteDesc'), readTime: t('asphaltConcreteReadTime'), category: t('concreteCategory') },
   ];
 
   const roofingGuides = [
     { slug: 'how-to-calculate-roof-pitch', title: t('roofPitchCalcGuide'), description: t('roofPitchCalcDesc'), readTime: t('roofPitchReadTime'), category: t('roofingCategory') },
     { slug: 'roofing-materials-guide', title: t('roofingMaterialsGuide'), description: t('roofingMaterialsDesc'), readTime: t('roofingMaterialsReadTime'), category: t('roofingCategory') },
     { slug: 'roof-pitch-angle-conversion', title: t('pitchAngleGuide'), description: t('pitchAngleDesc'), readTime: t('pitchAngleReadTime'), category: t('roofingCategory') },
+    { slug: 'roofing-cost-guide', title: t('roofingCostGuide'), description: t('roofingCostDesc'), readTime: t('roofingCostReadTime'), category: t('roofingCategory') },
   ];
 
   const flooringGuides = [
@@ -61,6 +64,7 @@ export default async function GuidesPage({ params }: Props) {
     { slug: 'how-to-build-a-deck', title: t('deckBuildGuide'), description: t('deckBuildDesc'), readTime: t('deckBuildReadTime'), category: t('deckCategory') },
     { slug: 'deck-materials-calculator', title: t('deckMaterialsGuide'), description: t('deckMaterialsDesc'), readTime: t('deckMaterialsReadTime'), category: t('deckCategory') },
     { slug: 'deck-cost-estimation', title: t('deckCostGuide'), description: t('deckCostDesc'), readTime: t('deckCostReadTime'), category: t('deckCategory') },
+    { slug: 'diy-deck-mistakes', title: t('deckMistakesGuide'), description: t('deckMistakesDesc'), readTime: t('deckMistakesReadTime'), category: t('deckCategory') },
   ];
 
   const fenceGuides = [

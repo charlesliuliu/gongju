@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation';
 import DrywallCalculator from '@/components/tools/DrywallCalculator';
 import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import CategoryIllustration from '@/components/ui/CategoryIllustration';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -21,8 +22,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: getLocalizedAlternates(locale, '/tools/drywall-calculator'),
     openGraph: {
-      title: 'Drywall Calculator - Free Online Tool',
-      description: 'Estimate drywall panels, joint compound, and costs. Free online drywall calculator.',
+      title: 'Drywall Calculator',
+      description: 'Estimate drywall panels, joint compound, tape, and screws for any room.',
       url: 'https://appguidebook.com/tools/drywall-calculator',
       type: 'website',
     },
@@ -54,6 +55,7 @@ export default async function DrywallCalculatorPage({ params }: { params: Promis
             {t('pageDesc')}
           </p>
         </header>
+          <CategoryIllustration category="drywall" />
 
         {/* Calculator */}
         <DrywallCalculator />

@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { Link } from '@/i18n/navigation';
 import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs, ArticleJsonLd } from '@/components/ui/Breadcrumbs';
+import AuthorBio from '@/components/ui/AuthorBio';
+import CategoryIllustration from '@/components/ui/CategoryIllustration';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -77,6 +79,8 @@ export default async function LumberSizesAndTypesPage({ params }: { params: Prom
             <span>{t('readTime')}</span>
           </div>
         </header>
+          <AuthorBio locale={locale} />
+          <CategoryIllustration category="lumber" caption={t('illustrationCaption')} />
 
         {/* Introduction */}
         <p className="text-lg text-gray-700 leading-relaxed mb-12">
@@ -153,6 +157,13 @@ export default async function LumberSizesAndTypesPage({ params }: { params: Prom
               </p>
             </div>
           </div>
+
+          <p className="text-gray-600 text-sm">
+            {t('softHardLinkText')}{' '}
+            <Link href="/guides/how-to-calculate-lumber" className="text-primary-600 hover:text-primary-700 underline font-medium">
+              {tGuides('howToCalculateLumberGuide')}
+            </Link>
+          </p>
         </section>
 
         {/* Pressure Treated Lumber */}
@@ -240,16 +251,37 @@ export default async function LumberSizesAndTypesPage({ params }: { params: Prom
         {/* Summary */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-5">{t('summaryTitle')}</h2>
-          <p className="text-gray-700 leading-relaxed mb-4">{t('summaryP1')}</p>
-          <p className="text-gray-700 leading-relaxed">{t('summaryP2')}</p>
+          <p className="text-gray-700 leading-relaxed">{t('summaryP1')}</p>
         </section>
 
-        {/* Bottom CTA */}
-        <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8 my-12 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">{t('ctaTitle')}</h2>
-          <p className="text-gray-500 mb-6 max-w-md mx-auto">{t('ctaDesc')}</p>
-          <Link href="/tools/lumber-calculator" className="btn-primary inline-flex items-center gap-2">
-            Open Lumber Calculator
+        {/* FAQ Section */}
+        <section className="mb-12 border-t border-gray-200 pt-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">{t('faqTitle')}</h2>
+          <div className="space-y-6">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <details key={i} className="group bg-white border border-gray-200 rounded-xl overflow-hidden">
+                <summary className="flex items-center justify-between px-5 py-4 cursor-pointer hover:bg-gray-50 transition-colors">
+                  <span className="font-medium text-gray-900 pr-4">{t(`faqQ${i}`)}</span>
+                  <svg className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-5 pb-4">
+                  <p className="text-gray-600 leading-relaxed">{t(`faqA${i}`)}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        {/* Single neutral CTA — only ONE, at the very end */}
+        <div className="border border-gray-200 rounded-2xl p-8 my-12 text-center bg-gray-50/50">
+          <p className="text-gray-600 mb-5 max-w-xl mx-auto leading-relaxed text-sm">{t('toolEntryText')}</p>
+          <Link
+            href="/tools/lumber-calculator"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-white hover:border-gray-400 transition-colors"
+          >
+            {t('toolEntryLink')}
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
@@ -261,12 +293,12 @@ export default async function LumberSizesAndTypesPage({ params }: { params: Prom
           <h2 className="text-xl font-bold text-gray-900 mb-6">{tGuides('relatedGuides')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Link href="/guides/how-to-calculate-lumber" className="card hover:shadow-lg transition-all duration-200">
-              <h3 className="font-semibold text-gray-900 mb-1.5">{t('relatedGuide1Title')}</h3>
-              <p className="text-sm text-gray-500">{t('relatedGuide1Desc')}</p>
+              <h3 className="font-semibold text-gray-900 mb-1.5">{tGuides('howToCalculateLumberGuide')}</h3>
+              <p className="text-sm text-gray-500">{tGuides('howToCalculateLumberDesc')}</p>
             </Link>
             <Link href="/guides/board-feet-calculation" className="card hover:shadow-lg transition-all duration-200">
-              <h3 className="font-semibold text-gray-900 mb-1.5">{t('relatedGuide2Title')}</h3>
-              <p className="text-sm text-gray-500">{t('relatedGuide2Desc')}</p>
+              <h3 className="font-semibold text-gray-900 mb-1.5">{tGuides('boardFeetCalcGuide')}</h3>
+              <p className="text-sm text-gray-500">{tGuides('boardFeetCalcDesc')}</p>
             </Link>
           </div>
         </div>

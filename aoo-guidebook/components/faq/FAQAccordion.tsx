@@ -107,7 +107,6 @@ export default function FAQAccordion({
                   <p className="text-gray-600 mt-4 leading-relaxed">
                     {item.a}
                   </p>
-                  {/* Related links */}
                   {(item.tool || item.guide) && (
                     <div className="flex flex-wrap gap-4 mt-4">
                       {item.tool && (
@@ -148,7 +147,6 @@ export default function FAQAccordion({
         })}
       </div>
 
-      {/* Empty state */}
       {filtered.length === 0 && (
         <div className="text-center py-16 text-gray-400">
           <p className="text-lg">No questions in this category yet.</p>

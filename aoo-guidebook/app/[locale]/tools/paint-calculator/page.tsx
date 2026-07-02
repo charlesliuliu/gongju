@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation';
 import PaintCalculator from '@/components/tools/PaintCalculator';
 import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import CategoryIllustration from '@/components/ui/CategoryIllustration';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: getLocalizedAlternates(locale, '/tools/paint-calculator'),
     openGraph: {
-      title: 'Paint Calculator - Free Online Tool',
+      title: 'Paint Calculator',
       description: 'Calculate exactly how much paint you need for any room. Includes windows, doors, number of coats, and cost estimation.',
       url: 'https://appguidebook.com/tools/paint-calculator',
       type: 'website',
@@ -55,6 +56,7 @@ export default async function PaintCalculatorPage({ params }: { params: Promise<
             {t('pageDesc')}
           </p>
         </header>
+          <CategoryIllustration category="paint" />
 
         {/* Calculator */}
         <PaintCalculator />

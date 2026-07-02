@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation';
 import LumberCalculator from '@/components/tools/LumberCalculator';
 import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import CategoryIllustration from '@/components/ui/CategoryIllustration';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -22,8 +23,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: getLocalizedAlternates(locale, '/tools/lumber-calculator'),
     openGraph: {
-      title: 'Lumber Calculator - Free Online Tool',
-      description: 'Calculate lumber board feet, cost, and quantity needed for your project. Free online lumber and timber calculator.',
+      title: 'Lumber Calculator',
+      description: 'Calculate lumber board feet, linear feet, cost, and quantity needed for your woodworking or construction project.',
       url: 'https://appguidebook.com/tools/lumber-calculator',
       type: 'website',
     },
@@ -55,6 +56,7 @@ export default async function LumberCalculatorPage({ params }: { params: Promise
             {t('pageDesc')}
           </p>
         </header>
+          <CategoryIllustration category="lumber" />
 
         {/* Calculator */}
         <LumberCalculator />

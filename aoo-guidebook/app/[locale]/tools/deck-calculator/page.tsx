@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation';
 import DeckCalculator from '@/components/tools/DeckCalculator';
 import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import CategoryIllustration from '@/components/ui/CategoryIllustration';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -21,8 +22,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: getLocalizedAlternates(locale, '/tools/deck-calculator'),
     openGraph: {
-      title: 'Deck Calculator - Free Online Tool',
-      description: 'Calculate deck materials, boards, joists, and cost. Free online deck building calculator.',
+      title: 'Deck Calculator',
+      description: 'Calculate deck materials, boards, joists, and cost for your deck building project.',
       url: 'https://appguidebook.com/tools/deck-calculator',
       type: 'website',
     },
@@ -54,6 +55,7 @@ export default async function DeckCalculatorPage({ params }: { params: Promise<{
             {t('pageDesc')}
           </p>
         </header>
+          <CategoryIllustration category="deck" />
 
         {/* Calculator */}
         <DeckCalculator />

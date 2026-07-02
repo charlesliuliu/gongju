@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: Inter, system-ui, sans-serif;
+
+  --color-primary-50: #ecfdf5;
+  --color-primary-100: #d1fae5;
+  --color-primary-200: #a7f3d0;
+  --color-primary-300: #6ee7b7;
+  --color-primary-400: #34d399;
+  --color-primary-500: #10b981;
+  --color-primary-600: #059669;
+  --color-primary-700: #047857;
+  --color-primary-800: #065f46;
+  --color-primary-900: #064e3b;
+
+  --color-accent-50: #fff7ed;
+  --color-accent-100: #ffedd5;
+  --color-accent-200: #fed7aa;
+  --color-accent-300: #fdba74;
+  --color-accent-400: #fb923c;
+  --color-accent-500: #f97316;
+  --color-accent-600: #ea580c;
+  --color-accent-700: #c2410c;
+  --color-accent-800: #9a3412;
+  --color-accent-900: #7c2d12;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-gray-900 antialiased;
+}
+
+a {
+  @apply text-primary-600 hover:text-primary-700 transition-colors;
+}
+
+.btn-primary {
+  @apply bg-primary-600 text-white px-8 py-3.5 rounded-xl font-semibold
+         hover:bg-primary-700 hover:shadow-lg hover:-translate-y-0.5
+         active:translate-y-0 transition-all duration-200
+         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
+         text-base;
+}
+
+.btn-secondary {
+  @apply bg-white text-gray-700 px-6 py-3.5 rounded-xl font-medium
+         border border-gray-300 hover:bg-gray-50 hover:border-gray-400 hover:shadow-sm
+         transition-all duration-200
+         focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+}
+
+.card {
+  @apply bg-white rounded-2xl shadow-md border border-gray-100 p-6 md:p-8
+         hover:shadow-lg transition-shadow duration-300;
+}
+
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-accent-500;
+}
+
+h1 {
+  @apply tracking-tight;
+}
+
+h2 {
+  @apply tracking-tight;
+}

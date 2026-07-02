@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation';
 import FenceCalculator from '@/components/tools/FenceCalculator';
 import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
+import CategoryIllustration from '@/components/ui/CategoryIllustration';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -21,8 +22,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     ],
     alternates: getLocalizedAlternates(locale, '/tools/fence-calculator'),
     openGraph: {
-      title: 'Fence Calculator - Free Online Tool',
-      description: 'Calculate fence materials, posts, pickets, and costs. Free online fence material calculator with cost estimation.',
+      title: 'Fence Calculator',
+      description: 'Calculate fence materials, posts, pickets, and costs for any fencing project.',
       url: 'https://appguidebook.com/tools/fence-calculator',
       type: 'website',
     },
@@ -54,6 +55,7 @@ export default async function FenceCalculatorPage({ params }: { params: Promise<
             {t('pageDesc')}
           </p>
         </header>
+          <CategoryIllustration category="fence" />
 
         {/* Calculator */}
         <FenceCalculator />

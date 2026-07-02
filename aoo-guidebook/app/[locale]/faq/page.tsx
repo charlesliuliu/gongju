@@ -55,18 +55,11 @@ export default async function FAQPage({ params }: Props) {
     { key: 'trust', label: t('categoryTrust'), icon: '✅' },
   ];
 
-  const qasForSchema = items.map((item) => ({
-    question: item.q,
-    answer: item.a,
-  }));
-
   return (
     <div className="py-12">
       <div className="container-custom">
-        {/* Breadcrumb */}
         <Breadcrumbs items={[{ label: tGlobal('faq') }]} locale={locale} />
 
-        {/* Header */}
         <h1 className="text-4xl font-bold text-gray-900 mb-4 text-center">
           {t('title')}
         </h1>
@@ -74,10 +67,8 @@ export default async function FAQPage({ params }: Props) {
           {t('subtitle')}
         </p>
 
-        {/* FAQ accordion with categories */}
         <FAQAccordion items={items} categories={categories} />
 
-        {/* Bottom CTA */}
         <div className="text-center mt-16 bg-gray-50 border border-gray-200 rounded-2xl p-8 max-w-2xl mx-auto">
           <h2 className="text-xl font-bold text-gray-900 mb-2">
             Still have questions?
@@ -97,11 +88,17 @@ export default async function FAQPage({ params }: Props) {
         </div>
       </div>
 
-      {/* FAQ Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqPageSchema(qasForSchema)),
+          __html: JSON.stringify(
+            faqPageSchema(
+              (t.raw('items') as { q: string; a: string }[]).map((item) => ({
+                question: item.q,
+                answer: item.a,
+              }))
+            )
+          ),
         }}
       />
     </div>

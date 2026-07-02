@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { Link } from '@/i18n/navigation';
 import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs, ArticleJsonLd } from '@/components/ui/Breadcrumbs';
+import AuthorBio from '@/components/ui/AuthorBio';
+import CategoryIllustration from '@/components/ui/CategoryIllustration';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -17,6 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       'what concrete mix to use',
       'concrete psi ratings',
       'concrete mix design',
+      'concrete mix FAQ',
     ],
     alternates: getLocalizedAlternates(locale, '/guides/concrete-mix-ratios'),
     openGraph: {
@@ -32,20 +35,18 @@ export default async function ConcreteMixRatiosPage({ params }: { params: Promis
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'mixRatiosPage' });
   const tGuides = await getTranslations({ locale, namespace: 'guides' });
-  const tGlobal = await getTranslations({ locale, namespace: 'global' });
 
   return (
     <div className="py-12">
       <article className="container-custom max-w-4xl">
-        {/* Header */}
         <header className="mb-10">
           <Breadcrumbs
             items={[
               { label: tGuides('title'), href: '/guides' },
               { label: tGuides('mixRatiosGuide') },
             ]}
-           locale={locale}
-/>
+            locale={locale}
+          />
           <ArticleJsonLd path="/guides/concrete-mix-ratios" locale={locale} headline={tGuides('mixRatiosGuide')}
             description={tGuides('mixRatiosDesc')}
           />
@@ -61,6 +62,8 @@ export default async function ConcreteMixRatiosPage({ params }: { params: Promis
             <span>{t('readTime')}</span>
           </div>
         </header>
+        <AuthorBio locale={locale} />
+        <CategoryIllustration category="concrete" caption={t('illustrationCaption')} />
 
         {/* Quick Mix Reference */}
         <div className="bg-gradient-to-br from-primary-600 to-primary-700 rounded-2xl p-6 mb-12">
@@ -103,15 +106,11 @@ export default async function ConcreteMixRatiosPage({ params }: { params: Promis
         </div>
 
         {/* Introduction */}
-        <p className="text-lg text-gray-700 leading-relaxed mb-12">
-          {t('intro')}
-        </p>
+        <p className="text-lg text-gray-700 leading-relaxed mb-12">{t('intro')}</p>
 
         {/* What Is a Mix Ratio */}
         <section className="mb-14">
-          <h2 className="text-2xl font-bold text-gray-900 mb-5">
-            {t('whatIsTitle')}
-          </h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-5">{t('whatIsTitle')}</h2>
           <p className="text-gray-700 mb-4">
             {t('whatIsDesc')}
             <strong>{t('whatIsItems')}</strong>
@@ -125,20 +124,14 @@ export default async function ConcreteMixRatiosPage({ params }: { params: Promis
               <li><strong>2 parts</strong> {t('exampleSand')}</li>
               <li><strong>3 parts</strong> {t('exampleGravel')}</li>
             </ul>
-            <p className="text-sm text-gray-500 mt-3">
-              {t('exampleNote')}
-            </p>
+            <p className="text-sm text-gray-500 mt-3">{t('exampleNote')}</p>
           </div>
         </section>
 
         {/* Strength Grades */}
         <section className="mb-14">
-          <h2 className="text-2xl font-bold text-gray-900 mb-5">
-            {t('strengthTitle')}
-          </h2>
-          <p className="text-gray-700 mb-6">
-            {t('strengthDesc')}
-          </p>
+          <h2 className="text-2xl font-bold text-gray-900 mb-5">{t('strengthTitle')}</h2>
+          <p className="text-gray-700 mb-6">{t('strengthDesc')}</p>
 
           <div className="space-y-4">
             <div className="border border-gray-200 rounded-xl p-5">
@@ -177,16 +170,19 @@ export default async function ConcreteMixRatiosPage({ params }: { params: Promis
               <p className="text-gray-400 text-sm">{t('grade5000Mix')}</p>
             </div>
           </div>
+
+          <p className="text-sm text-gray-500 mt-5 leading-relaxed">
+            {t('calcGuideLinkText')}{' '}
+            <Link href="/guides/how-to-calculate-concrete" className="text-primary-600 hover:text-primary-700 underline underline-offset-2 font-medium">
+              {tGuides('concreteCalcGuide')}
+            </Link>
+          </p>
         </section>
 
         {/* Common Pre-Mixed Options */}
         <section className="mb-14">
-          <h2 className="text-2xl font-bold text-gray-900 mb-5">
-            {t('premixedTitle')}
-          </h2>
-          <p className="text-gray-700 mb-6">
-            {t('premixedDesc')}
-          </p>
+          <h2 className="text-2xl font-bold text-gray-900 mb-5">{t('premixedTitle')}</h2>
+          <p className="text-gray-700 mb-6">{t('premixedDesc')}</p>
 
           <div className="overflow-x-auto rounded-xl border border-gray-200">
             <table className="w-full border-collapse text-sm">
@@ -225,9 +221,7 @@ export default async function ConcreteMixRatiosPage({ params }: { params: Promis
 
         {/* How to Choose */}
         <section className="mb-14">
-          <h2 className="text-2xl font-bold text-gray-900 mb-5">
-            {t('chooseTitle')}
-          </h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-5">{t('chooseTitle')}</h2>
 
           <div className="space-y-3">
             <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 flex items-start gap-3">
@@ -263,12 +257,8 @@ export default async function ConcreteMixRatiosPage({ params }: { params: Promis
 
         {/* Additives */}
         <section className="mb-14">
-          <h2 className="text-2xl font-bold text-gray-900 mb-5">
-            {t('additivesTitle')}
-          </h2>
-          <p className="text-gray-700 mb-6">
-            {t('additivesDesc')}
-          </p>
+          <h2 className="text-2xl font-bold text-gray-900 mb-5">{t('additivesTitle')}</h2>
+          <p className="text-gray-700 mb-6">{t('additivesDesc')}</p>
 
           <div className="space-y-3">
             <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
@@ -292,9 +282,7 @@ export default async function ConcreteMixRatiosPage({ params }: { params: Promis
 
         {/* Mixing Tips */}
         <section className="mb-14">
-          <h2 className="text-2xl font-bold text-gray-900 mb-5">
-            {t('tipsTitle')}
-          </h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-5">{t('tipsTitle')}</h2>
 
           <div className="space-y-3">
             <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-start gap-3">
@@ -343,12 +331,36 @@ export default async function ConcreteMixRatiosPage({ params }: { params: Promis
           <p className="text-gray-700 leading-relaxed">{t('summaryP2')}</p>
         </section>
 
-        {/* Bottom CTA */}
-        <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8 my-12 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">{t('ctaTitle')}</h2>
-          <p className="text-gray-500 mb-6 max-w-md mx-auto">{t('ctaDesc')}</p>
-          <Link href="/tools/concrete-calculator" className="btn-primary inline-flex items-center gap-2">
-            Open Concrete Calculator
+        {/* FAQ — NEW: purely educational */}
+        <section className="mb-14">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('faqTitle')}</h2>
+          <div className="space-y-4">
+            {(['1', '2', '3', '4', '5'] as const).map((n) => (
+              <details key={n} className="bg-white border border-gray-200 rounded-xl group">
+                <summary className="px-6 py-4 cursor-pointer font-medium text-gray-900 hover:text-primary-700 transition-colors list-none [&::-webkit-details-marker]:hidden flex items-center justify-between">
+                  {t(`faqQ${n}`)}
+                  <svg className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-6 pb-5 text-gray-600 text-sm leading-relaxed border-t border-gray-100 pt-4">
+                  {t(`faqA${n}`)}
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        {/* Single neutral CTA — only ONE, at the very end */}
+        <div className="border border-gray-200 rounded-2xl p-8 my-12 text-center bg-gray-50/50">
+          <p className="text-gray-600 mb-5 max-w-xl mx-auto leading-relaxed text-sm">
+            {t('ctaDesc')}
+          </p>
+          <Link
+            href="/tools/concrete-calculator"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-white hover:border-gray-400 transition-colors"
+          >
+            {t('ctaBtn')}
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>

@@ -63,9 +63,15 @@ export function ArticleJsonLd({
     '@type': 'Article',
     headline,
     description,
-    author: { '@type': 'Organization', name: 'App Guidebook' },
+    author: {
+      '@type': 'Person',
+      name: 'App Guidebook Team',
+      url: `${baseUrl}/${locale ?? 'en'}/about/`,
+    },
     publisher: { '@type': 'Organization', name: 'App Guidebook' },
     url: `${baseUrl}/${locale ?? 'en'}${path}/`,
+    datePublished: '2026-01-15',
+    dateModified: '2026-06-30',
   };
 
   return (

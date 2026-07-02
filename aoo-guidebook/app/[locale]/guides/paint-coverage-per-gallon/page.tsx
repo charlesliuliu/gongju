@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { Link } from '@/i18n/navigation';
 import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs, ArticleJsonLd } from '@/components/ui/Breadcrumbs';
+import AuthorBio from '@/components/ui/AuthorBio';
+import CategoryIllustration from '@/components/ui/CategoryIllustration';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -32,7 +34,6 @@ export default async function PaintCoveragePage({ params }: { params: Promise<{ 
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'paintCoveragePage' });
   const tGuides = await getTranslations({ locale, namespace: 'guides' });
-  const tGlobal = await getTranslations({ locale, namespace: 'global' });
 
   return (
     <div className="py-12">
@@ -44,8 +45,8 @@ export default async function PaintCoveragePage({ params }: { params: Promise<{ 
               { label: tGuides('title'), href: '/guides' },
               { label: tGuides('paintCoverageGuide') },
             ]}
-           locale={locale}
-/>
+            locale={locale}
+          />
           <ArticleJsonLd path="/guides/paint-coverage-per-gallon" locale={locale} headline={tGuides('paintCoverageGuide')}
             description={tGuides('paintCoverageDesc')}
           />
@@ -61,6 +62,8 @@ export default async function PaintCoveragePage({ params }: { params: Promise<{ 
             <span>{t('readTime')}</span>
           </div>
         </header>
+        <AuthorBio locale={locale} />
+        <CategoryIllustration category="paint" caption={t('illustrationCaption')} />
 
         {/* Intro */}
         <section className="prose prose-gray max-w-none mb-10">
@@ -89,6 +92,14 @@ export default async function PaintCoveragePage({ params }: { params: Promise<{ 
               <div key={i} className="p-4 border border-gray-200 rounded-xl">
                 <h3 className="font-semibold text-gray-900 mb-1">{t(`factor${i}Title`)}</h3>
                 <p className="text-sm text-gray-600">{t(`factor${i}Desc`)}</p>
+                {i === 2 && (
+                  <p className="text-sm text-gray-500 mt-2 leading-relaxed">
+                    {t('factor2LinkText')}{' '}
+                    <Link href="/guides/interior-vs-exterior-paint" className="text-primary-600 hover:text-primary-700 underline underline-offset-2 font-medium">
+                      {tGuides('paintTypesGuide')}
+                    </Link>
+                  </p>
+                )}
               </div>
             ))}
           </div>
@@ -136,22 +147,66 @@ export default async function PaintCoveragePage({ params }: { params: Promise<{ 
           </ul>
         </section>
 
-        {/* Summary */}
-        <section className="mb-10 p-6 bg-primary-50 border border-primary-100 rounded-xl">
-          <h2 className="text-xl font-bold text-gray-900 mb-3">{t('summaryTitle')}</h2>
-          <div className="prose prose-gray max-w-none space-y-2">
-            <p>{t('summaryP1')}</p>
-            <p>{t('summaryP2')}</p>
+        {/* Summary — purely educational, no tool pitch */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-5">{t('summaryTitle')}</h2>
+          <p className="text-gray-700 leading-relaxed mb-4">{t('summaryP1')}</p>
+          <p className="text-gray-700 leading-relaxed">{t('summaryP2')}</p>
+        </section>
+
+        {/* FAQ — NEW: purely educational */}
+        <section className="mb-14">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('faqTitle')}</h2>
+          <div className="space-y-4">
+            {(['1', '2', '3', '4', '5'] as const).map((n) => (
+              <details key={n} className="bg-white border border-gray-200 rounded-xl group">
+                <summary className="px-6 py-4 cursor-pointer font-medium text-gray-900 hover:text-primary-700 transition-colors list-none [&::-webkit-details-marker]:hidden flex items-center justify-between">
+                  {t(`faqQ${n}`)}
+                  <svg className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-6 pb-5 text-gray-600 text-sm leading-relaxed border-t border-gray-100 pt-4">
+                  {t(`faqA${n}`)}
+                </div>
+              </details>
+            ))}
           </div>
         </section>
 
-        {/* CTA */}
-        <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 text-center">
-          <h3 className="text-xl font-bold text-gray-900 mb-2">{tGuides('paintCalcGuide')}</h3>
-          <p className="text-gray-600 mb-4">{tGuides('paintCalcDesc')}</p>
-          <Link href="/tools/paint-calculator" className="btn-primary inline-block">
-            {tGuides('paintCalcGuide')}
+        {/* Single neutral CTA — only ONE, at the very end */}
+        <div className="border border-gray-200 rounded-2xl p-8 my-12 text-center bg-gray-50/50">
+          <p className="text-gray-600 mb-5 max-w-xl mx-auto leading-relaxed text-sm">
+            {t('ctaDesc')}
+          </p>
+          <Link
+            href="/tools/paint-calculator"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-white hover:border-gray-400 transition-colors"
+          >
+            {t('ctaBtn')}
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
           </Link>
+        </div>
+
+        {/* Related Guides */}
+        <div className="border-t border-gray-200 pt-12">
+          <h2 className="text-xl font-bold text-gray-900 mb-6">{t('relatedTitle')}</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/guides/interior-vs-exterior-paint" className="card hover:shadow-lg transition-all duration-200">
+              <h3 className="font-semibold text-gray-900 mb-1.5">{t('relatedGuide1Title')}</h3>
+              <p className="text-sm text-gray-500">{t('relatedGuide1Desc')}</p>
+            </Link>
+            <Link href="/guides/how-to-calculate-paint-needed" className="card hover:shadow-lg transition-all duration-200">
+              <h3 className="font-semibold text-gray-900 mb-1.5">{t('relatedGuide2Title')}</h3>
+              <p className="text-sm text-gray-500">{t('relatedGuide2Desc')}</p>
+            </Link>
+            <Link href="/guides/how-to-calculate-paint-needed" className="card hover:shadow-lg transition-all duration-200">
+              <h3 className="font-semibold text-gray-900 mb-1.5">{t('relatedGuide3Title')}</h3>
+              <p className="text-sm text-gray-500">{t('relatedGuide3Desc')}</p>
+            </Link>
+          </div>
         </div>
       </article>
     </div>
