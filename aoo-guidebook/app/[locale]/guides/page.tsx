@@ -25,6 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function GuidesPage({ params }: Props) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'guides' });
+  const tTools = await getTranslations({ locale, namespace: 'tools' });
 
   const concreteGuides = [
     { slug: 'how-to-calculate-concrete', title: t('concreteCalcGuide'), description: t('concreteCalcDesc'), readTime: t('concreteCalcReadTime'), category: t('concreteCategory') },
@@ -95,10 +96,10 @@ export default async function GuidesPage({ params }: Props) {
       <div className="container-custom max-w-4xl">
         <div className="text-center mb-14">
           <h1 className="text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">
-            {t('title')}
+            {t('pageH1')}
           </h1>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-            {t('desc')}
+            {t('pageIntro')}
           </p>
         </div>
 
@@ -130,6 +131,104 @@ export default async function GuidesPage({ params }: Props) {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-16 border-t border-gray-200 pt-10">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-3">
+              {t('calcCTA')}
+            </h2>
+            <p className="text-gray-500">
+              {t('calcCTADesc')}
+            </p>
+          </div>
+
+          {/* Scene-grouped tool CTAs */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Foundation & Concrete */}
+            <div className="card text-center">
+              <div className="text-2xl mb-2">🏗️</div>
+              <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                {t('calcGroupFoundation')}
+              </h3>
+              <Link
+                href="/tools/concrete-calculator"
+                className="btn-primary inline-flex items-center gap-1 text-sm"
+              >
+                {tTools('concreteTitle')} →
+              </Link>
+            </div>
+
+            {/* Roofing, Fence & Deck */}
+            <div className="card text-center">
+              <div className="text-2xl mb-2">🏠</div>
+              <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                {t('calcGroupOutdoor')}
+              </h3>
+              <div className="flex flex-col gap-2">
+                <Link
+                  href="/tools/roof-pitch-calculator"
+                  className="btn-primary inline-flex items-center gap-1 text-sm"
+                >
+                  {tTools('roofingTitle')} →
+                </Link>
+                <Link
+                  href="/tools/fence-calculator"
+                  className="btn-secondary inline-flex items-center gap-1 text-sm"
+                >
+                  {tTools('fenceTitle')} →
+                </Link>
+                <Link
+                  href="/tools/deck-calculator"
+                  className="btn-secondary inline-flex items-center gap-1 text-sm"
+                >
+                  {tTools('deckTitle')} →
+                </Link>
+              </div>
+            </div>
+
+            {/* Flooring, Paint & Drywall */}
+            <div className="card text-center">
+              <div className="text-2xl mb-2">🪵</div>
+              <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                {t('calcGroupInterior')}
+              </h3>
+              <div className="flex flex-col gap-2">
+                <Link
+                  href="/tools/flooring-calculator"
+                  className="btn-primary inline-flex items-center gap-1 text-sm"
+                >
+                  {tTools('flooringTitle')} →
+                </Link>
+                <Link
+                  href="/tools/paint-calculator"
+                  className="btn-secondary inline-flex items-center gap-1 text-sm"
+                >
+                  {tTools('paintTitle')} →
+                </Link>
+                <Link
+                  href="/tools/drywall-calculator"
+                  className="btn-secondary inline-flex items-center gap-1 text-sm"
+                >
+                  {tTools('drywallTitle')} →
+                </Link>
+              </div>
+            </div>
+
+            {/* Lumber & Woodworking */}
+            <div className="card text-center">
+              <div className="text-2xl mb-2">🪵</div>
+              <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                {t('calcGroupWoodworking')}
+              </h3>
+              <Link
+                href="/tools/lumber-calculator"
+                className="btn-primary inline-flex items-center gap-1 text-sm"
+              >
+                {tTools('lumberTitle')} →
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>

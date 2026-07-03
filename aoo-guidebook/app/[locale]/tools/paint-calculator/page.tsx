@@ -5,6 +5,7 @@ import PaintCalculator from '@/components/tools/PaintCalculator';
 import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import CategoryIllustration from '@/components/ui/CategoryIllustration';
+import RelatedCalculators from '@/components/tools/RelatedCalculators';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -102,6 +103,8 @@ export default async function PaintCalculatorPage({ params }: { params: Promise<
             </Link>
           </div>
         </div>
+
+        <RelatedCalculators currentSlug="paint-calculator" locale={locale} />
 
         {/* Disclaimer */}
         <div className="border-t border-gray-200 pt-8 mt-12">

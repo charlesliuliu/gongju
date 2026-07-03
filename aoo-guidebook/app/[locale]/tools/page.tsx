@@ -90,7 +90,7 @@ export default async function ToolsPage({ params }: Props) {
       <div className="container-custom">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            {t('pageTitle')}
+            {t('pageH1')}
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             {t('pageDesc')}
@@ -127,6 +127,32 @@ export default async function ToolsPage({ params }: Props) {
               </div>
             </Link>
           ))}
+        </div>
+
+        <div className="mt-16 border-t border-gray-200 pt-10">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+            {t('resourceLinks')}
+          </h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/guides/concrete-mix-ratios"
+              className="btn-secondary inline-flex items-center gap-2"
+            >
+              📖 {t('concreteMixLink')}
+            </Link>
+            <Link
+              href="/faq"
+              className="btn-secondary inline-flex items-center gap-2"
+            >
+              ❓ {t('faqLink')}
+            </Link>
+            <Link
+              href="/guides"
+              className="btn-secondary inline-flex items-center gap-2"
+            >
+              📚 {t('refGuideLink')}
+            </Link>
+          </div>
         </div>
       </div>
     </div>

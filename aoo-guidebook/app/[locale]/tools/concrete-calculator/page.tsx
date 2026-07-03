@@ -5,6 +5,7 @@ import ConcreteCalculator from '@/components/tools/ConcreteCalculator';
 import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import CategoryIllustration from '@/components/ui/CategoryIllustration';
+import RelatedCalculators from '@/components/tools/RelatedCalculators';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -146,6 +147,8 @@ export default async function ConcreteCalculatorPage({ params }: Props) {
             </Link>
           </div>
         </div>
+
+        <RelatedCalculators currentSlug="concrete-calculator" locale={locale} />
 
         {/* Disclaimer */}
         <div className="mt-8 p-4 bg-gray-50 border border-gray-200 rounded-lg text-center text-sm text-gray-600">

@@ -47,8 +47,14 @@
     "bottomToolsBtn": "View All Tools"
   },
   "tools": {
-    "pageTitle": "Construction Calculators",
-    "pageDesc": "One-stop construction estimation tools covering home improvement and outdoor project materials and cost calculations.",
+    "pageTitle": "Construction Calculators | DIY Concrete, Fence & Roof Cost Estimator",
+    "pageH1": "Free DIY Construction Material Calculators",
+    "pageDesc": "Free construction calculators to calculate concrete, fence and roofing costs for DIY home projects, get accurate material quantity & cost estimates instantly.",
+    "relatedCalculators": "Related Calculators",
+    "resourceLinks": "Explore More Resources",
+    "concreteMixLink": "Concrete Mix Ratio Guide",
+    "faqLink": "Frequently Asked Questions",
+    "refGuideLink": "Construction Reference Guide",
     "concreteDesc": "Calculate concrete volume, bags needed, and cost for slabs, footings, and columns.",
     "roofingDesc": "Calculate roof pitch, angle, and estimate roofing materials needed.",
     "flooringDesc": "Calculate flooring materials needed for your room including waste factor.",
@@ -184,7 +190,18 @@
   },
   "guides": {
     "title": "Construction Guides",
-    "desc": "Free tutorials and step-by-step guides to help you plan, estimate, and execute your next project.",
+    "pageH1": "Complete DIY Construction Reference Guide for Home Builders",
+    "desc": "Free step-by-step construction tutorials for DIY home builders. Master concrete mix ratios, roof installation and fence building with free material calculators.",
+    "pageIntro": "Browse our complete DIY construction reference guide covering every phase of home building and renovation. Whether you need to understand the right concrete mix ratio for your slab, plan a full roof installation from underlayment to shingles, or follow a detailed fence building guide with post spacing charts, our tutorials give you the knowledge to tackle projects confidently. Each guide pairs with a companion calculator so you can estimate materials and costs in one workflow.",
+    "calcCTA": "Try Our Free Calculators",
+    "calcCTADesc": "Ready to estimate materials? Use our companion calculators to turn guide knowledge into actionable numbers:",
+    "calcGroupFoundation": "Foundation & Concrete",
+    "calcGroupOutdoor": "Roofing, Fence & Deck",
+    "calcGroupInterior": "Flooring, Paint & Drywall",
+    "calcGroupWoodworking": "Lumber & Woodworking",
+    "concreteCalcCTA": "Concrete Calculator →",
+    "roofPitchCalcCTA": "Roof Pitch Calculator →",
+    "fenceCalcCTA": "Fence Calculator →",
     "comingSoon": "Coming Soon",
     "concreteCategory": "Concrete",
     "roofingCategory": "Roofing",
@@ -582,12 +599,14 @@
       {
         "q": "Can I use these calculators on my phone at a job site?",
         "a": "Absolutely! All our tools are fully mobile-friendly and work great on smartphones and tablets. No app download needed — just open your browser and start calculating.",
-        "cat": "usage"
+        "cat": "usage",
+        "tool": "/tools"
       },
       {
         "q": "How accurate are the calculations?",
         "a": "Our calculators use industry-standard formulas from construction engineering references. However, all results are estimates and should be verified by a qualified professional for critical structural projects. We recommend ordering 5–10% extra material to account for waste.",
-        "cat": "trust"
+        "cat": "trust",
+        "tool": "/tools/concrete-calculator"
       },
       {
         "q": "What’s the difference between C25 and C30 concrete? Which should I use?",
@@ -626,7 +645,8 @@
       {
         "q": "Should I hire a contractor or DIY my renovation?",
         "a": "DIY is cost-effective for small projects like painting a room, installing laminate flooring, or building a small deck. However, structural work (foundations, roofing, electrical) should always be done by licensed professionals. Consider your skill level, time, and whether permits are required. Mistakes on structural projects can be expensive to fix.",
-        "cat": "cost"
+        "cat": "cost",
+        "guide": "/guides"
       },
       {
         "q": "How much does it cost to pour a concrete driveway?",
@@ -639,6 +659,7 @@
         "q": "What’s the average cost per square foot to install flooring?",
         "a": "Flooring costs vary widely by material: laminate ($2–$5/sq ft), vinyl plank ($3–$7/sq ft), hardwood ($6–$15/sq ft), and tile ($5–$12/sq ft). These are material-only costs; professional installation adds $2–$5/sq ft. Use our flooring calculator to estimate materials, and check our flooring cost guide for detailed budgeting.",
         "cat": "cost",
+        "tool": "/tools/flooring-calculator",
         "guide": "/guides/flooring-cost-estimation"
       },
       {

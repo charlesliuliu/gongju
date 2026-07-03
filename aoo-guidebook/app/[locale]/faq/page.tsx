@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation';
 import { getLocalizedAlternates, faqPageSchema } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import FAQAccordion from '@/components/faq/FAQAccordion';
+import RelatedCalculators from '@/components/tools/RelatedCalculators';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -68,6 +69,8 @@ export default async function FAQPage({ params }: Props) {
         </p>
 
         <FAQAccordion items={items} categories={categories} />
+
+        <RelatedCalculators locale={locale} />
 
         <div className="text-center mt-16 bg-gray-50 border border-gray-200 rounded-2xl p-8 max-w-2xl mx-auto">
           <h2 className="text-xl font-bold text-gray-900 mb-2">

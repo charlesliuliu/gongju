@@ -5,6 +5,7 @@ import DeckCalculator from '@/components/tools/DeckCalculator';
 import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import CategoryIllustration from '@/components/ui/CategoryIllustration';
+import RelatedCalculators from '@/components/tools/RelatedCalculators';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -128,6 +129,8 @@ export default async function DeckCalculatorPage({ params }: { params: Promise<{
             </Link>
           </div>
         </div>
+
+        <RelatedCalculators currentSlug="deck-calculator" locale={locale} />
 
         {/* Disclaimer */}
         <div className="mt-8 p-4 bg-gray-50 border border-gray-200 rounded-lg text-center text-sm text-gray-600">

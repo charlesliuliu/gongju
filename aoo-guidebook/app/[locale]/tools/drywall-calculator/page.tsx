@@ -5,6 +5,7 @@ import DrywallCalculator from '@/components/tools/DrywallCalculator';
 import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import CategoryIllustration from '@/components/ui/CategoryIllustration';
+import RelatedCalculators from '@/components/tools/RelatedCalculators';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -123,6 +124,8 @@ export default async function DrywallCalculatorPage({ params }: { params: Promis
             </Link>
           </div>
         </div>
+
+        <RelatedCalculators currentSlug="drywall-calculator" locale={locale} />
 
         {/* Disclaimer */}
         <div className="border-t border-gray-200 pt-8 mt-12">
