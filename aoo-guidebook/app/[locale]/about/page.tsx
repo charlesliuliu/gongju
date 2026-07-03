@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
 import { getLocalizedAlternates } from '@/lib/seo';
+import { Link } from '@/i18n/navigation';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -10,8 +11,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'aboutPage' });
   return {
-    title: t('title'),
-    description: t('subtitle'),
+    title: t('metaTitle'),
+    description: t('metaDescription'),
     alternates: getLocalizedAlternates(locale, '/about'),
   };
 }
@@ -32,6 +33,19 @@ export default async function AboutPage({ params }: Props) {
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t('missionTitle')}</h2>
           <p className="text-gray-700 leading-relaxed mb-4">{t('missionP1')}</p>
           <p className="text-gray-700 leading-relaxed">{t('missionP2')}</p>
+
+          {/* CTA: Mission → Tools/Guides */}
+          <div className="mt-6 bg-gradient-to-r from-primary-50 to-construction-50 border border-primary-100 rounded-2xl p-6">
+            <p className="text-gray-800 font-medium mb-4">{t('ctaMissionText')}</p>
+            <div className="flex flex-wrap gap-3">
+              <Link href="/tools" className="btn-primary">
+                {t('ctaCalculatorsBtn')}
+              </Link>
+              <Link href="/guides" className="btn-secondary">
+                {t('ctaGuidesBtn')}
+              </Link>
+            </div>
+          </div>
         </section>
 
         {/* Team */}
@@ -63,6 +77,15 @@ export default async function AboutPage({ params }: Props) {
             <li>{t('methodologyRef4')}</li>
           </ul>
           <p className="text-gray-700 leading-relaxed">{t('methodologyP2')}</p>
+        </section>
+
+        {/* CTA: Bottom → Tools */}
+        <section className="mb-12 bg-gradient-to-r from-construction-50 to-primary-50 border border-construction-200 rounded-2xl p-8 text-center">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-3">{t('ctaBottomTitle')}</h2>
+          <p className="text-gray-700 mb-6 max-w-lg mx-auto">{t('ctaBottomDesc')}</p>
+          <Link href="/tools" className="btn-primary">
+            {t('ctaBottomBtn')}
+          </Link>
         </section>
 
         {/* Contact */}

@@ -2645,6 +2645,8 @@
     "toolEntryLink": "配套屋顶坡度测算工具"
   },
   "aboutPage": {
+    "metaTitle": "关于 App Guidebook | 免费建筑计算器与DIY施工指南",
+    "metaDescription": "App Guidebook 为承包商和DIY业主提供精准的建筑计算器与专业施工指南。所有公式遵循 ACI、ASTM 和 IRC 建筑规范，无需付费或注册。",
     "title": "关于 App Guidebook",
     "subtitle": "您信赖的建筑计算器和专业DIY指南来源。",
     "missionTitle": "我们的使命",
@@ -2661,6 +2663,12 @@
     "methodologyRef3": "IRC（国际住宅规范）建筑实践规范",
     "methodologyRef4": "厂商发布的材料覆盖率规格",
     "methodologyP2": "我们的指南通过结合制造商技术文档、行业出版物和现场实操经验进行调研编写。我们会定期审核和更新内容，以反映最新的建筑规范和材料成本。",
+    "ctaMissionText": "使用我们的免费建筑计算器开始估算您的项目，或浏览我们的分步DIY施工指南。",
+    "ctaCalculatorsBtn": "查看所有计算器",
+    "ctaGuidesBtn": "阅读施工指南",
+    "ctaBottomTitle": "准备好计算您的建筑材料了吗？",
+    "ctaBottomDesc": "使用我们符合行业标准的计算器来估算混凝土、屋顶、围栏、油漆、地板等项目——无需注册，完全免费。",
+    "ctaBottomBtn": "浏览所有计算器",
     "contactTitle": "联系我们",
     "contactDesc": "有问题、建议或发现了错误？我们很乐意听取您的意见。请联系："
   }

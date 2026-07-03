@@ -2645,6 +2645,8 @@
     "toolEntryLink": "Companion Roof Pitch Tool"
   },
   "aboutPage": {
+    "metaTitle": "About App Guidebook | Free Construction Calculators & DIY Guides",
+    "metaDescription": "App Guidebook delivers accurate construction calculators and expert DIY guides for contractors and homeowners. All formulas follow ACI, ASTM & IRC building codes — no paywalls or registration required.",
     "title": "About App Guidebook",
     "subtitle": "Your trusted source for construction calculators and expert DIY guides.",
     "missionTitle": "Our Mission",
@@ -2661,6 +2663,12 @@
     "methodologyRef3": "IRC (International Residential Code) for building practices",
     "methodologyRef4": "Published manufacturer specifications for material coverage rates",
     "methodologyP2": "Our guides are researched using a combination of manufacturer technical documents, trade publications, and hands-on field experience. We regularly review and update content to reflect current building codes and material costs.",
+    "ctaMissionText": "Start estimating your project now with our free construction calculators, or browse our step-by-step DIY building guides.",
+    "ctaCalculatorsBtn": "View All Calculators",
+    "ctaGuidesBtn": "Read Construction Guides",
+    "ctaBottomTitle": "Ready to calculate your construction materials?",
+    "ctaBottomDesc": "Use our industry-standard calculators to estimate concrete, roofing, fence, paint, flooring and more — no sign-ups, no fees.",
+    "ctaBottomBtn": "Browse All Calculators",
     "contactTitle": "Contact Us",
     "contactDesc": "Have a question, suggestion, or found an error? We'd love to hear from you. Reach us at:"
   }
