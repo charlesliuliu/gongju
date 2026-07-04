@@ -5,6 +5,8 @@ import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs, ArticleJsonLd } from '@/components/ui/Breadcrumbs';
 import AuthorBio from '@/components/ui/AuthorBio';
 import CategoryIllustration from '@/components/ui/CategoryIllustration';
+import QuickCalcBar from '@/components/ui/QuickCalcBar';
+import FloatingCalcNav from '@/components/ui/FloatingCalcNav';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -41,6 +43,7 @@ export default async function DrywallCostPage({ params }: { params: Promise<{ lo
 
   return (
     <div className="py-12">
+      <FloatingCalcNav />
       <article className="container-custom max-w-4xl">
         <header className="mb-10">
           <Breadcrumbs
@@ -73,6 +76,9 @@ export default async function DrywallCostPage({ params }: { params: Promise<{ lo
 
         {/* Introduction */}
         <p className="text-lg text-gray-700 leading-relaxed mb-12">{t('intro')}</p>
+
+          {/* Quick-access calculator bar — above the fold CTA */}
+          <QuickCalcBar category="drywall" locale={locale} />
 
         {/* 1. Material Costs */}
         <section className="mb-14">

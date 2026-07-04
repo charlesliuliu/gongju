@@ -6,6 +6,8 @@ import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs, ArticleJsonLd } from '@/components/ui/Breadcrumbs';
 import AuthorBio from '@/components/ui/AuthorBio';
 import CategoryIllustration from '@/components/ui/CategoryIllustration';
+import QuickCalcBar from '@/components/ui/QuickCalcBar';
+import FloatingCalcNav from '@/components/ui/FloatingCalcNav';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -43,6 +45,7 @@ export default async function ConcreteMistakesPage({ params }: { params: Promise
 
   return (
     <div className="py-12">
+      <FloatingCalcNav />
       <article className="container-custom max-w-4xl">
         <Breadcrumbs items={[{ label: tGuides('title'), href: '/guides' }, { label: tGuides('concreteMistakesGuide') }]} locale={locale} />
         <ArticleJsonLd path="/guides/diy-concrete-mistakes" locale={locale} headline={tGuides('concreteMistakesGuide')} description={tGuides('concreteMistakesDesc')} />
@@ -79,7 +82,8 @@ export default async function ConcreteMistakesPage({ params }: { params: Promise
             <div className="text-2xl font-black text-blue-600">{t('introTitle')}</div>
           </div>
           <p className="text-gray-700 leading-relaxed text-lg">{t('introText')}</p>
-        </SceneCard>
+
+            <QuickCalcBar category="concrete" locale={locale} />        </SceneCard>
 
         {/* ── Scene 1: Wrong Mix Ratio ── */}
         <SceneCard tag={SCENE_TAGS[1]} icon={SCENE_ICONS[1]} tagColor={TAG_COLORS[1]} bgGradient={BG_GRADIENTS[1]} index={1} cost={t('wasteCost1')}>

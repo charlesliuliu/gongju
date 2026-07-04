@@ -16,7 +16,28 @@
     "writtenBy": "Written by the App Guidebook Team",
     "contactEmail": "contact@appguidebook.com",
     "location": "Based in the United States",
-    "constructionTagline": "Construction Tools & Guides"
+    "constructionTagline": "Construction Tools & Guides",
+    "quickCalcBar": {
+      "title": "Get instant material estimates:",
+      "concrete": "Concrete Calculator",
+      "flooring": "Flooring Calculator",
+      "paint": "Paint Calculator",
+      "roofing": "Roof Pitch Calculator",
+      "drywall": "Drywall Calculator",
+      "lumber": "Lumber Calculator",
+      "deck": "Deck Calculator",
+      "fence": "Fence Calculator"
+    },
+    "floatingNav": {
+      "label": "Quick calculator navigation",
+      "title": "Quick Tools",
+      "concrete": "Concrete",
+      "flooring": "Flooring",
+      "paint": "Paint",
+      "roofing": "Roof Pitch",
+      "drywall": "Drywall",
+      "lumber": "Lumber"
+    }
   },
   "home": {
     "metaTitle": "Construction Reference Guides & Estimation Tools — Concrete, Roofing, Flooring, Drywall",
@@ -193,8 +214,8 @@
     "pageH1": "Complete DIY Construction Reference Guide for Home Builders",
     "desc": "Free step-by-step construction tutorials for DIY home builders. Master concrete mix ratios, roof installation and fence building with free material calculators.",
     "pageIntro": "Browse our complete DIY construction reference guide covering every phase of home building and renovation. Whether you need to understand the right concrete mix ratio for your slab, plan a full roof installation from underlayment to shingles, or follow a detailed fence building guide with post spacing charts, our tutorials give you the knowledge to tackle projects confidently. Each guide pairs with a companion calculator so you can estimate materials and costs in one workflow.",
-    "calcCTA": "Try Our Free Calculators",
-    "calcCTADesc": "Ready to estimate materials? Use our companion calculators to turn guide knowledge into actionable numbers:",
+    "calcCTA": "Jump to Material Calculators",
+    "calcCTADesc": "Found your construction specs above? Jump to our calculators to compute exact material quantities & project costs instantly.",
     "calcGroupFoundation": "Foundation & Concrete",
     "calcGroupOutdoor": "Roofing, Fence & Deck",
     "calcGroupInterior": "Flooring, Paint & Drywall",
@@ -696,6 +717,7 @@
     "measurementsTip3": "60 lb bag ≈ 0.45 cubic feet (covers ~5.4 sq ft at 4\" thick)",
     "measurementsTip4": "80 lb bag ≈ 0.60 cubic feet (covers ~7.2 sq ft at 4\" thick)",
     "measurementsP2": "When you order concrete from a supplier, they'll ask for cubic yards. When you buy bags at a home improvement store, you'll need to know how many bags. This guide covers both scenarios.",
+    "inlineCalcText": "Skip the manual math — enter your dimensions below and get instant results:",
     "slabTitle": "How to Calculate Concrete for a Slab",
     "slabP1": "A concrete slab is the most common project type—patios, driveways, shed floors, and walkways all use this calculation.",
     "slabFormula": "Volume (cubic feet) = Length × Width × (Thickness ÷ 12)",

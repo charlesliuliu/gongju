@@ -5,6 +5,8 @@ import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs, ArticleJsonLd } from '@/components/ui/Breadcrumbs';
 import AuthorBio from '@/components/ui/AuthorBio';
 import CategoryIllustration from '@/components/ui/CategoryIllustration';
+import QuickCalcBar from '@/components/ui/QuickCalcBar';
+import FloatingCalcNav from '@/components/ui/FloatingCalcNav';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -41,6 +43,7 @@ export default async function AsphaltVsConcretePage({ params }: { params: Promis
 
   return (
     <div className="py-12">
+      <FloatingCalcNav />
       <article className="container-custom max-w-4xl">
         <Breadcrumbs items={[{ label: tGuides('title'), href: '/guides' }, { label: tGuides('asphaltConcreteGuide') }]} locale={locale} />
         <ArticleJsonLd path="/guides/asphalt-vs-concrete-driveway" locale={locale} headline={tGuides('asphaltConcreteGuide')} description={tGuides('asphaltConcreteDesc')} />
@@ -59,6 +62,9 @@ export default async function AsphaltVsConcretePage({ params }: { params: Promis
         </header>
         <AuthorBio locale={locale} />
         <CategoryIllustration category="concrete" caption={t('illustrationCaption')} />
+
+          {/* Quick-access calculator bar — above the fold CTA */}
+          <QuickCalcBar category="concrete" locale={locale} />
 
         {/* Quick Comparison Table */}
         <section className="mb-14">

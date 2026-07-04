@@ -5,6 +5,8 @@ import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs, ArticleJsonLd } from '@/components/ui/Breadcrumbs';
 import AuthorBio from '@/components/ui/AuthorBio';
 import CategoryIllustration from '@/components/ui/CategoryIllustration';
+import QuickCalcBar from '@/components/ui/QuickCalcBar';
+import FloatingCalcNav from '@/components/ui/FloatingCalcNav';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -37,6 +39,7 @@ export default async function PaintCoveragePage({ params }: { params: Promise<{ 
 
   return (
     <div className="py-12">
+      <FloatingCalcNav />
       <article className="container-custom max-w-4xl">
         {/* Header */}
         <header className="mb-10">
@@ -68,6 +71,9 @@ export default async function PaintCoveragePage({ params }: { params: Promise<{ 
         {/* Intro */}
         <section className="prose prose-gray max-w-none mb-10">
           <p>{t('intro')}</p>
+
+          {/* Quick-access calculator bar — above the fold CTA */}
+          <QuickCalcBar category="paint" locale={locale} />
         </section>
 
         {/* Standard Coverage */}

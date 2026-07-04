@@ -5,6 +5,8 @@ import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs, ArticleJsonLd } from '@/components/ui/Breadcrumbs';
 import AuthorBio from '@/components/ui/AuthorBio';
 import CategoryIllustration from '@/components/ui/CategoryIllustration';
+import QuickCalcBar from '@/components/ui/QuickCalcBar';
+import FloatingCalcNav from '@/components/ui/FloatingCalcNav';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -37,6 +39,7 @@ export default async function HowToCalculateRoofPitchPage({ params }: { params: 
 
   return (
     <div className="py-12">
+      <FloatingCalcNav />
       <article className="container-custom max-w-4xl">
         {/* Header */}
         <header className="mb-10">
@@ -67,6 +70,9 @@ export default async function HowToCalculateRoofPitchPage({ params }: { params: 
 
         {/* Introduction */}
         <p className="text-lg text-gray-700 leading-relaxed mb-12">{t('intro')}</p>
+
+          {/* Quick-access calculator bar — above the fold CTA */}
+          <QuickCalcBar category="roofing" locale={locale} />
 
         {/* What Is Roof Pitch */}
         <section className="mb-14">

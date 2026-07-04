@@ -5,6 +5,8 @@ import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs, ArticleJsonLd } from '@/components/ui/Breadcrumbs';
 import AuthorBio from '@/components/ui/AuthorBio';
 import CategoryIllustration from '@/components/ui/CategoryIllustration';
+import QuickCalcBar from '@/components/ui/QuickCalcBar';
+import FloatingCalcNav from '@/components/ui/FloatingCalcNav';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -37,6 +39,7 @@ export default async function HowToBuildADeckPage({ params }: { params: Promise<
 
   return (
     <div className="py-12">
+      <FloatingCalcNav />
       <article className="container-custom max-w-4xl">
         {/* Header: Breadcrumbs + H1 + Meta */}
         <header className="mb-10">
@@ -77,6 +80,9 @@ export default async function HowToBuildADeckPage({ params }: { params: Promise<
 
         {/* Intro (纯科普，无工具推销) */}
         <p className="text-lg text-gray-700 leading-relaxed mb-12">{t('intro')}</p>
+
+          {/* Quick-access calculator bar — above the fold CTA */}
+          <QuickCalcBar category="deck" locale={locale} />
 
         {/* Section 1: Planning and Permits */}
         <section className="mb-14">

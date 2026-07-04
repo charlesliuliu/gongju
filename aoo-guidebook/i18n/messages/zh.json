@@ -16,7 +16,28 @@
     "writtenBy": "由 App Guidebook 团队撰写",
     "contactEmail": "contact@appguidebook.com",
     "location": "位于美国",
-    "constructionTagline": "建筑工具与指南"
+    "constructionTagline": "建筑工具与指南",
+    "quickCalcBar": {
+      "title": "快速获取材料用量估算：",
+      "concrete": "混凝土计算器",
+      "flooring": "地板计算器",
+      "paint": "油漆计算器",
+      "roofing": "屋顶坡度计算器",
+      "drywall": "石膏板计算器",
+      "lumber": "木材计算器",
+      "deck": "露台计算器",
+      "fence": "围栏计算器"
+    },
+    "floatingNav": {
+      "label": "快速计算器导航",
+      "title": "快捷工具",
+      "concrete": "混凝土",
+      "flooring": "地板",
+      "paint": "油漆",
+      "roofing": "屋顶",
+      "drywall": "石膏板",
+      "lumber": "木材"
+    }
   },
   "home": {
     "metaTitle": "建筑施工参考指南与测算工具 — 混凝土、屋顶、地板、石膏板",
@@ -193,8 +214,8 @@
     "pageH1": "DIY 建筑施工完全参考指南——为自建房业主打造",
     "desc": "免费分步施工教程，手把手教你掌握混凝土配比、屋顶安装和围栏建造，配套材料计算器即时算料。",
     "pageIntro": "浏览我们完整的 DIY 建筑施工参考指南，覆盖自建房从基础到封顶的每个阶段。无论你是想弄清混凝土配比对不同部位的要求、规划屋顶安装从基层到瓦面的全流程，还是参考围栏建造指南确定立柱间距与材料清单，我们的教程都能让你胸有成竹。每篇指南都配有对应的免费计算器，看完直接算料，一步到位。",
-    "calcCTA": "试试免费计算器",
-    "calcCTADesc": "准备估算材料了？用配套计算器把指南中的知识变成实际数据：",
+    "calcCTA": "使用材料计算器",
+    "calcCTADesc": "在上方找到你需要的施工参数了吗？跳转到我们的计算器，立即算出精确的材料用量和项目成本。",
     "calcGroupFoundation": "基础与混凝土",
     "calcGroupOutdoor": "屋顶、围栏与露台",
     "calcGroupInterior": "地板、油漆与石膏板",
@@ -696,6 +717,7 @@
     "measurementsTip3": "60磅袋 ≈ 0.45立方英尺（4英寸厚约覆盖5.4平方英尺）",
     "measurementsTip4": "80磅袋 ≈ 0.60立方英尺（4英寸厚约覆盖7.2平方英尺）",
     "measurementsP2": "向供应商订购混凝土时，他们询问的是立方码。在家装店购买袋装料时，你需要知道需要多少袋。本指南涵盖两种场景。",
+    "inlineCalcText": "跳过手动计算——直接输入尺寸即可获取即时结果：",
     "slabTitle": "如何计算混凝土板用量",
     "slabP1": "混凝土板是最常见的项目类型——庭院、车道、棚屋地面和人行道均使用此公式。",
     "slabFormula": "体积（立方英尺）= 长 × 宽 ×（厚度 ÷ 12）",

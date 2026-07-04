@@ -5,6 +5,8 @@ import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs, ArticleJsonLd } from '@/components/ui/Breadcrumbs';
 import AuthorBio from '@/components/ui/AuthorBio';
 import CategoryIllustration from '@/components/ui/CategoryIllustration';
+import QuickCalcBar from '@/components/ui/QuickCalcBar';
+import FloatingCalcNav from '@/components/ui/FloatingCalcNav';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -74,6 +76,7 @@ export default async function HowToCalculateConcretePage({ params }: { params: P
 
   return (
     <div className="py-12">
+      <FloatingCalcNav />
       <article className="container-custom max-w-4xl">
         <header className="mb-10">
           <Breadcrumbs
@@ -119,6 +122,9 @@ export default async function HowToCalculateConcretePage({ params }: { params: P
         {/* Introduction */}
         <p className="text-lg text-gray-700 leading-relaxed mb-12">{t('intro')}</p>
 
+          {/* Quick-access calculator bar — above the fold CTA */}
+          <QuickCalcBar category="concrete" locale={locale} />
+
         {/* Understanding Measurements */}
         <section id="measurements" className="mb-14">
           <h2 className="text-2xl font-bold text-gray-900 mb-5">{t('measurementsTitle')}</h2>
@@ -132,6 +138,15 @@ export default async function HowToCalculateConcretePage({ params }: { params: P
             </ul>
           </TipBox>
           <p className="text-gray-700">{t('measurementsP2')}</p>
+          <p className="text-sm text-gray-500 mt-5 leading-relaxed">
+            {t('inlineCalcText')}{' '}
+            <Link href="/tools/concrete-calculator" className="inline-flex items-center gap-1 text-primary-600 hover:text-primary-700 underline underline-offset-2 font-semibold">
+              {tGuides('concreteCalcCTA')}
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </p>
         </section>
 
         {/* Slabs */}

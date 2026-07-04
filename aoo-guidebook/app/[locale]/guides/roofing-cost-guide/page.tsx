@@ -5,6 +5,8 @@ import { getLocalizedAlternates } from '@/lib/seo';
 import { Breadcrumbs, ArticleJsonLd } from '@/components/ui/Breadcrumbs';
 import AuthorBio from '@/components/ui/AuthorBio';
 import CategoryIllustration from '@/components/ui/CategoryIllustration';
+import QuickCalcBar from '@/components/ui/QuickCalcBar';
+import FloatingCalcNav from '@/components/ui/FloatingCalcNav';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -39,6 +41,7 @@ export default async function RoofingCostPage({ params }: { params: Promise<{ lo
 
   return (
     <div className="py-12">
+      <FloatingCalcNav />
       <article className="container-custom max-w-4xl">
         <Breadcrumbs items={[{ label: tGuides('title'), href: '/guides' }, { label: tGuides('roofingCostGuide') }]} locale={locale} />
         <ArticleJsonLd path="/guides/roofing-cost-guide" locale={locale} headline={tGuides('roofingCostGuide')} description={tGuides('roofingCostDesc')} />
@@ -55,6 +58,9 @@ export default async function RoofingCostPage({ params }: { params: Promise<{ lo
         </header>
         <AuthorBio locale={locale} />
         <CategoryIllustration category="roofing" caption={t('illustrationCaption')} />
+
+          {/* Quick-access calculator bar — above the fold CTA */}
+          <QuickCalcBar category="roofing" locale={locale} />
 
         {/* Quick Stats */}
         <section className="mb-14">
