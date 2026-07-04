@@ -112,7 +112,7 @@ export default async function ConcreteMixRatiosPage({ params }: { params: Promis
         <p className="text-lg text-gray-700 leading-relaxed mb-12">{t('intro')}</p>
 
           {/* Quick-access calculator bar — above the fold CTA */}
-          <QuickCalcBar category="concrete" locale={locale} />
+          <QuickCalcBar category="concrete" />
 
         {/* What Is a Mix Ratio */}
         <section className="mb-14">

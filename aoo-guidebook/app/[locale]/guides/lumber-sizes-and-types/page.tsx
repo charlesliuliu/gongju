@@ -91,7 +91,7 @@ export default async function LumberSizesAndTypesPage({ params }: { params: Prom
         </p>
 
           {/* Quick-access calculator bar — above the fold CTA */}
-          <QuickCalcBar category="lumber" locale={locale} />
+          <QuickCalcBar category="lumber" />
 
         {/* Understanding Nominal vs Actual Sizes */}
         <section className="mb-14">

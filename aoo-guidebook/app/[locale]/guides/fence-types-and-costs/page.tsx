@@ -87,7 +87,7 @@ export default async function FenceTypesPage({ params }: { params: Promise<{ loc
         <p className="text-lg text-gray-700 leading-relaxed mb-12">{t('intro')}</p>
 
           {/* Quick-access calculator bar — above the fold CTA */}
-          <QuickCalcBar category="fence" locale={locale} />
+          <QuickCalcBar category="fence" />
 
         {/* Material Sections */}
         {sections.map(({ key, title }) => (

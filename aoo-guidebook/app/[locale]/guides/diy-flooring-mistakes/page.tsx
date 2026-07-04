@@ -83,7 +83,7 @@ export default async function FlooringMistakesPage({ params }: { params: Promise
           </div>
           <p className="text-gray-700 leading-relaxed text-lg">{t('introText')}</p>
 
-            <QuickCalcBar category="flooring" locale={locale} />        </SceneCard>
+            <QuickCalcBar category="flooring" />        </SceneCard>
 
         {/* ── Scene 1: Measured Wrong ── */}
         <SceneCard tag={SCENE_TAGS[1]} icon={SCENE_ICONS[1]} tagColor={TAG_COLORS[1]} bgGradient={BG_GRADIENTS[1]} index={1} cost={t('wasteCost1')}>

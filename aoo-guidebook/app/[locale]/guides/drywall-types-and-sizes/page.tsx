@@ -72,7 +72,7 @@ export default async function DrywallTypesPage({ params }: { params: Promise<{ l
         <p className="text-lg text-gray-700 leading-relaxed mb-12">{t('intro')}</p>
 
           {/* Quick-access calculator bar — above the fold CTA */}
-          <QuickCalcBar category="drywall" locale={locale} />
+          <QuickCalcBar category="drywall" />
 
         {/* Standard Sizes */}
         <section className="mb-14">

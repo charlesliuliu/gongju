@@ -74,7 +74,7 @@ export default async function PitchAngleConversionPage({ params }: { params: Pro
         <p className="text-lg text-gray-700 leading-relaxed mb-12">{t('intro')}</p>
 
           {/* Quick-access calculator bar — above the fold CTA */}
-          <QuickCalcBar category="roofing" locale={locale} />
+          <QuickCalcBar category="roofing" />
 
         {/* Relationship */}
         <section className="mb-14">

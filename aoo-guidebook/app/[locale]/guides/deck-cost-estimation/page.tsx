@@ -71,7 +71,7 @@ export default async function DeckCostPage({ params }: { params: Promise<{ local
         <p className="text-lg text-gray-700 leading-relaxed mb-12">{t('intro')}</p>
 
           {/* Quick-access calculator bar — above the fold CTA */}
-          <QuickCalcBar category="deck" locale={locale} />
+          <QuickCalcBar category="deck" />
 
         {/* Section 1: Material Costs */}
         <section className="mb-14">

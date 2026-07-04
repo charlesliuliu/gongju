@@ -64,7 +64,7 @@ export default async function AsphaltVsConcretePage({ params }: { params: Promis
         <CategoryIllustration category="concrete" caption={t('illustrationCaption')} />
 
           {/* Quick-access calculator bar — above the fold CTA */}
-          <QuickCalcBar category="concrete" locale={locale} />
+          <QuickCalcBar category="concrete" />
 
         {/* Quick Comparison Table */}
         <section className="mb-14">

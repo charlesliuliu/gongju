@@ -80,7 +80,7 @@ export default async function DeckMistakesPage({ params }: { params: Promise<{ l
           </div>
           <p className="text-gray-700 leading-relaxed text-lg">{t('introText')}</p>
 
-            <QuickCalcBar category="deck" locale={locale} />        </SceneCard>
+            <QuickCalcBar category="deck" />        </SceneCard>
 
         <SceneCard tag={SCENE_TAGS[1]} icon={SCENE_ICONS[1]} tagColor={TAG_COLORS[1]} bgGradient={BG_GRADIENTS[1]} index={1} cost={t('wasteCost1')}>
           <QuoteBubble text={t('scene1Bubble')} mood="bad" />

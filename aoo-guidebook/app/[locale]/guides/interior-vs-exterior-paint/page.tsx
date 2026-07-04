@@ -75,7 +75,7 @@ export default async function PaintTypesPage({ params }: { params: Promise<{ loc
           <p>{t('intro')}</p>
 
           {/* Quick-access calculator bar — above the fold CTA */}
-          <QuickCalcBar category="paint" locale={locale} />
+          <QuickCalcBar category="paint" />
         </section>
 
         {/* Why Different */}

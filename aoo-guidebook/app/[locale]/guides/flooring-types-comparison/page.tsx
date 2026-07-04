@@ -74,7 +74,7 @@ export default async function FlooringTypesPage({ params }: { params: Promise<{ 
           <p>{t('intro')}</p>
 
           {/* Quick-access calculator bar — above the fold CTA */}
-          <QuickCalcBar category="flooring" locale={locale} />
+          <QuickCalcBar category="flooring" />
         </section>
 
         {/* Comparison Table */}

@@ -120,7 +120,7 @@ export default async function HowToCalculateLumberPage({ params }: { params: Pro
         </nav>
 
           {/* Quick-access calculator bar — above the fold CTA */}
-          <QuickCalcBar category="lumber" locale={locale} />
+          <QuickCalcBar category="lumber" />
 
         {/* What is Board Feet */}
         <section id="what-is" className="mb-14">

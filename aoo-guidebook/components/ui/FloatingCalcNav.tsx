@@ -4,12 +4,12 @@ import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 
 const CORE_CALCULATORS = [
-  { labelKey: 'floatingNav.concrete', href: '/tools/concrete-calculator', emoji: '🏗️' },
-  { labelKey: 'floatingNav.flooring', href: '/tools/flooring-calculator', emoji: '🪵' },
-  { labelKey: 'floatingNav.paint', href: '/tools/paint-calculator', emoji: '🎨' },
-  { labelKey: 'floatingNav.roofing', href: '/tools/roof-pitch-calculator', emoji: '🏠' },
-  { labelKey: 'floatingNav.drywall', href: '/tools/drywall-calculator', emoji: '🧱' },
-  { labelKey: 'floatingNav.lumber', href: '/tools/lumber-calculator', emoji: '📐' },
+  { labelKey: 'floatingNavConcrete', href: '/tools/concrete-calculator', emoji: '🏗️' },
+  { labelKey: 'floatingNavFlooring', href: '/tools/flooring-calculator', emoji: '🪵' },
+  { labelKey: 'floatingNavPaint', href: '/tools/paint-calculator', emoji: '🎨' },
+  { labelKey: 'floatingNavRoofing', href: '/tools/roof-pitch-calculator', emoji: '🏠' },
+  { labelKey: 'floatingNavDrywall', href: '/tools/drywall-calculator', emoji: '🧱' },
+  { labelKey: 'floatingNavLumber', href: '/tools/lumber-calculator', emoji: '📐' },
 ];
 
 export default function FloatingCalcNav() {
@@ -18,11 +18,11 @@ export default function FloatingCalcNav() {
   return (
     <aside
       className="fixed right-4 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-1.5"
-      aria-label={t('floatingNav.label')}
+      aria-label={t('floatingNavLabel')}
     >
       <div className="bg-white/95 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-lg p-2 flex flex-col gap-1">
         <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider text-center px-1 pt-1 pb-0.5">
-          {t('floatingNav.title')}
+          {t('floatingNavTitle')}
         </p>
         {CORE_CALCULATORS.map((calc) => (
           <Link

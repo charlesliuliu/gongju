@@ -71,7 +71,7 @@ export default async function FencePostPage({ params }: { params: Promise<{ loca
         <p className="text-lg text-gray-700 leading-relaxed mb-12">{t('intro')}</p>
 
           {/* Quick-access calculator bar — above the fold CTA */}
-          <QuickCalcBar category="fence" locale={locale} />
+          <QuickCalcBar category="fence" />
 
         {/* Section 1: Standard Post Spacing */}
         <section className="mb-14">

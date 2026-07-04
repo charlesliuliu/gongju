@@ -60,7 +60,7 @@ export default async function RoofingCostPage({ params }: { params: Promise<{ lo
         <CategoryIllustration category="roofing" caption={t('illustrationCaption')} />
 
           {/* Quick-access calculator bar — above the fold CTA */}
-          <QuickCalcBar category="roofing" locale={locale} />
+          <QuickCalcBar category="roofing" />
 
         {/* Quick Stats */}
         <section className="mb-14">

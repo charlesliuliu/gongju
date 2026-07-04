@@ -93,7 +93,7 @@ export default async function ConcreteSlabCostGuidePage({ params }: { params: Pr
         <p className="text-lg text-gray-700 leading-relaxed mb-12">{t('intro')}</p>
 
           {/* Quick-access calculator bar — above the fold CTA */}
-          <QuickCalcBar category="concrete" locale={locale} />
+          <QuickCalcBar category="concrete" />
 
         {/* Average Costs */}
         <section className="mb-14">

@@ -123,7 +123,7 @@ export default async function HowToCalculateConcretePage({ params }: { params: P
         <p className="text-lg text-gray-700 leading-relaxed mb-12">{t('intro')}</p>
 
           {/* Quick-access calculator bar — above the fold CTA */}
-          <QuickCalcBar category="concrete" locale={locale} />
+          <QuickCalcBar category="concrete" />
 
         {/* Understanding Measurements */}
         <section id="measurements" className="mb-14">

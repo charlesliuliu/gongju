@@ -70,7 +70,7 @@ export default async function FenceCalcPage({ params }: { params: Promise<{ loca
         <p className="text-lg text-gray-700 leading-relaxed mb-12">{t('intro')}</p>
 
           {/* Quick-access calculator bar — above the fold CTA */}
-          <QuickCalcBar category="fence" locale={locale} />
+          <QuickCalcBar category="fence" />
 
         {/* Section 1: Measuring */}
         <section className="mb-14">

@@ -73,7 +73,7 @@ export default async function PaintCoveragePage({ params }: { params: Promise<{ 
           <p>{t('intro')}</p>
 
           {/* Quick-access calculator bar — above the fold CTA */}
-          <QuickCalcBar category="paint" locale={locale} />
+          <QuickCalcBar category="paint" />
         </section>
 
         {/* Standard Coverage */}

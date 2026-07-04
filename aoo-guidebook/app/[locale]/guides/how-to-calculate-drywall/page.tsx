@@ -70,7 +70,7 @@ export default async function DrywallCalcPage({ params }: { params: Promise<{ lo
         <p className="text-lg text-gray-700 leading-relaxed mb-12">{t('intro')}</p>
 
           {/* Quick-access calculator bar — above the fold CTA */}
-          <QuickCalcBar category="drywall" locale={locale} />
+          <QuickCalcBar category="drywall" />
 
         <section className="mb-14">
           <h2 className="text-2xl font-bold text-gray-900 mb-5">{t('measuringTitle')}</h2>

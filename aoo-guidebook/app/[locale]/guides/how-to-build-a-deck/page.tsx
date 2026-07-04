@@ -82,7 +82,7 @@ export default async function HowToBuildADeckPage({ params }: { params: Promise<
         <p className="text-lg text-gray-700 leading-relaxed mb-12">{t('intro')}</p>
 
           {/* Quick-access calculator bar — above the fold CTA */}
-          <QuickCalcBar category="deck" locale={locale} />
+          <QuickCalcBar category="deck" />
 
         {/* Section 1: Planning and Permits */}
         <section className="mb-14">

@@ -75,7 +75,7 @@ export default async function BoardFeetCalculationPage({ params }: { params: Pro
           <p>{t('intro')}</p>
 
           {/* Quick-access calculator bar — above the fold CTA */}
-          <QuickCalcBar category="lumber" locale={locale} />
+          <QuickCalcBar category="lumber" />
         </section>
 
         {/* What is a Board Foot */}
